@@ -1,0 +1,105 @@
+<!--{
+  "title": "お問い合わせ・無料カウンセリング｜ReNEW.",
+  "description": "ReNEW.へのお問い合わせ・無料カウンセリングのお申し込みはこちら。フォームのほか、LINE、InstagramやXのDMからもお気軽にご相談ください。24時間受付中。",
+  "breadcrumb": [["お問い合わせ", "/contact/"]],
+  "cta": false
+}-->
+<header class="page-hero">
+  <span class="page-hero__en">CONTACT</span>
+  <h1>お問い合わせ・無料カウンセリング</h1>
+</header>
+
+<section class="sec sec--gray" aria-labelledby="contact-lead">
+  <div class="container">
+    <p class="sec__lead" id="contact-lead" style="margin-top:0">各種お問い合わせは、下記のフォームよりお願いいたします。<br class="pc">LINE、Instagram・XのDMからもお気軽にどうぞ。ご相談は24時間受付中です。</p>
+    <div class="contact-alt">
+      <a href="{{line_url}}" target="_blank" rel="noopener" data-track="line_click">{{icon:line}}LINEで相談</a>
+      <a href="https://www.instagram.com/renew.bc/" target="_blank" rel="noopener" data-track="sns_instagram">{{icon:instagram}}InstagramのDM</a>
+      <a href="https://twitter.com/Renew_souki" target="_blank" rel="noopener" data-track="sns_x">{{icon:x}}XのDM</a>
+    </div>
+    <p class="note" style="text-align:center;margin-top:16px">LINEなら、愛車の写真を送っていただくだけでもご相談いただけます。</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="form-title">
+  <div class="container">
+    <h2 class="sr-only" id="form-title">お問い合わせフォーム</h2>
+    <form class="form" method="post" action="/contact/send.php" data-contact-form>
+      <div class="hp" aria-hidden="true"><label>このフィールドは空のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <input type="hidden" name="ts" value="" data-ts>
+
+      <div class="form__row">
+        <label class="form__label" for="f-type">お問い合わせ項目<span class="req">必須</span></label>
+        <select id="f-type" name="type" required data-label="お問い合わせ項目">
+          <option value="">選択してください</option>
+          <option>サブスク</option>
+          <option>フル施工</option>
+          <option>個別メニュー</option>
+          <option>施工事例を見て</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="f-name">お名前<span class="req">必須</span></label>
+        <input id="f-name" type="text" name="name" required maxlength="50" autocomplete="name" data-label="お名前">
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="f-kana">フリガナ<span class="req">必須</span></label>
+        <input id="f-kana" type="text" name="kana" required maxlength="50" data-label="フリガナ">
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="f-tel">電話番号<span class="req">必須</span></label>
+        <div>
+          <input id="f-tel" type="tel" name="tel" required maxlength="20" pattern="[0-9０-９\-－ ]{10,20}" autocomplete="tel" inputmode="tel" data-label="電話番号">
+          <p class="form__hint">例：090-1234-5678</p>
+        </div>
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="f-email">メールアドレス<span class="req">必須</span></label>
+        <input id="f-email" type="email" name="email" required maxlength="100" autocomplete="email" data-label="メールアドレス">
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="f-car">車種・年式・色<span class="opt">任意</span></label>
+        <div>
+          <input id="f-car" type="text" name="car" maxlength="100" data-label="車種・年式・色">
+          <p class="form__hint">例：レクサス RX／2024年式／ホワイト</p>
+        </div>
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="f-when">ご希望の時期<span class="opt">任意</span></label>
+        <div>
+          <input id="f-when" type="text" name="when" maxlength="100" data-label="ご希望の時期">
+          <p class="form__hint">例：来月の納車後、〇月頃 など</p>
+        </div>
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="f-area">お住まいの地域<span class="opt">任意</span></label>
+        <div>
+          <input id="f-area" type="text" name="area" maxlength="50" autocomplete="address-level1" data-label="お住まいの地域">
+          <p class="form__hint">例：岡山県岡山市、兵庫県 など</p>
+        </div>
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="f-body">お問い合わせ内容<span class="req">必須</span></label>
+        <textarea id="f-body" name="body" required maxlength="3000" data-label="お問い合わせ内容"></textarea>
+      </div>
+
+      <div class="form__agree">
+        <label><input type="checkbox" name="agree" value="1" required><span><a href="/privacy/" target="_blank">プライバシーポリシー</a>に同意する</span></label>
+      </div>
+      <div class="form__submit">
+        <button class="rn-button" type="submit">入力内容を確認する{{icon:chevron}}</button>
+      </div>
+    </form>
+
+    <div class="confirm" data-confirm hidden>
+      <h2 class="label">入力内容のご確認</h2>
+      <dl class="info" data-confirm-list></dl>
+      <div class="confirm__buttons">
+        <button class="rn-button rn-button--ghost" type="button" data-back>修正する</button>
+        <button class="rn-button" type="button" data-send>この内容で送信する{{icon:chevron}}</button>
+      </div>
+    </div>
+  </div>
+</section>
+<script>document.querySelector("[data-ts]").value = Math.floor(Date.now() / 1000);</script>

@@ -1,0 +1,11 @@
+# ビルド結果（GitHub Actions で生成する）
+public_html/
+
+# クライアント社内資料（公開リポジトリに含めない）
+renew-souki_renewal_spec.md
+renew-souki_improvements.md
+ReNEW-design-system.zip
+
+.claude/
+.DS_Store
+__pycache__/
