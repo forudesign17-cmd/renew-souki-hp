@@ -2,6 +2,12 @@
 
 `renew-souki_renewal_spec.md`（仕様書）と `ReNEW-design-system.zip`（デザインシステム）をもとに制作した、レンタルサーバー向けの静的サイトです。
 
+## 確認用サイト（GitHub Pages）
+
+https://forudesign17-cmd.github.io/renew-souki-hp/
+
+`main` に push すると GitHub Actions がビルドして自動更新します。確認用のため全ページ `noindex`（検索エンジンに載せない）です。お問い合わせフォームは PHP が動かないため、この確認用サイトでは送信できません。
+
 ## フォルダ構成
 
 ```
