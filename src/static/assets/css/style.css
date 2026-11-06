@@ -542,3 +542,10 @@ body.is-locked { overflow: hidden; }
 
 /* 日本語の改行位置を文節で（対応ブラウザのみ） */
 h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-break: auto-phrase; }
+
+/* ---------- movie（縦動画） ---------- */
+.movies { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.movie { width: min(320px, 100%); }
+.movie__video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: var(--photo); object-fit: cover; }
+.movie figcaption { margin-top: 12px; text-align: center; font-size: 13px; letter-spacing: .12em; color: var(--text-sub); }
+@media (max-width: 540px) { .movies { gap: 24px; } }

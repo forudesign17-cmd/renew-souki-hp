@@ -76,6 +76,26 @@
     targets.forEach(function (el) { el.classList.add("is-in"); });
   }
 
+  /* 動画：画面に入ったときだけ読み込み・再生し、外れたら止める（省データ・省電力） */
+  var videos = document.querySelectorAll("[data-lazy-video]");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    videos.forEach(function (v) { v.controls = true; });
+  } else {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) {
+          var p = v.play();
+          if (p && p.catch) p.catch(function () { v.controls = true; });
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.4 });
+    videos.forEach(function (v) { vio.observe(v); });
+  }
+
   /* 施工事例の絞り込み */
   document.querySelectorAll(".chips").forEach(function (group) {
     var grid = group.nextElementSibling;

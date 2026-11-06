@@ -189,27 +189,40 @@ def flow(compact=False):
     return f'<ol class="{cls}">' + "".join(steps) + "</ol>"
 
 
-# イメージ写真（AI生成）。assets/img/photos/ の同名ファイルを高解像度版や実写に置き換えればそのまま反映される
+# 写真の一覧。00〜11 はAI生成イメージ、12〜 はお店の実写（Google Drive の素材から）。
+# assets/img/photos/ の同名ファイルを差し替えればそのまま反映される。
+# (ファイル名, 代替テキスト, 横幅px, 高さpx, 切り抜きの中心 "x% y%")
 PHOTOS = [
-    ("00-car-black", "スタジオ照明が映り込む黒い車"),
-    ("01-buffing", "クロスで車体を拭き上げる手元"),
-    ("02-car-silver", "施工ブースに置かれたシルバーの車"),
-    ("03-foam-wash", "泡とミットを使った洗車"),
-    ("04-polisher", "ポリッシャーによる磨き"),
-    ("05-coating", "コーティング剤を塗布する手元"),
-    ("06-headlight", "透明感のあるヘッドライト"),
-    ("07-glass-water", "撥水したガラスの水滴"),
-    ("08-wheel", "磨き上げたホイール"),
-    ("09-interior", "黒いレザーの車内"),
-    ("10-booth", "照明を備えた施工ブース"),
-    ("11-tools", "ポリッシャーやクロスなどの施工道具"),
+    ("00-car-black", "スタジオ照明が映り込む黒い車", 476, 265, "50% 50%"),
+    ("01-buffing", "クロスで車体を拭き上げる手元", 476, 265, "50% 50%"),
+    ("02-car-silver", "施工ブースに置かれたシルバーの車", 476, 265, "50% 50%"),
+    ("03-foam-wash", "泡とミットを使った洗車", 476, 265, "50% 50%"),
+    ("04-polisher", "ポリッシャーによる磨き", 476, 265, "50% 50%"),
+    ("05-coating", "コーティング剤を塗布する手元", 476, 265, "50% 50%"),
+    ("06-headlight", "透明感のあるヘッドライト", 476, 265, "50% 50%"),
+    ("07-glass-water", "撥水したガラスの水滴", 476, 265, "50% 50%"),
+    ("08-wheel", "磨き上げたホイール", 476, 265, "50% 50%"),
+    ("09-interior", "黒いレザーの車内", 476, 265, "50% 50%"),
+    ("10-booth", "照明を備えた施工ブース", 476, 265, "50% 50%"),
+    ("11-tools", "ポリッシャーやクロスなどの施工道具", 476, 265, "50% 50%"),
+    ("12-studio-work", "ヘキサゴンのライトが映り込むイエローのフェラーリを仕上げるスタッフ", 2400, 1603, "55% 50%"),
+    ("13-staff-car", "ReNEW.のナンバープレートを付けたイエローのフェラーリとスタッフ", 935, 1400, "50% 60%"),
+    ("14-wipe", "愛車を丁寧に拭き上げるスタッフ", 935, 1400, "50% 45%"),
+    ("15-counseling", "イエローのフェラーリを前に施工内容を確認するスタッフ", 935, 1400, "50% 40%"),
+    ("16-wheel-check", "ホイールの状態を確認するスタッフ", 935, 1400, "55% 50%"),
+    ("17-coating-apply", "ボディにコーティング剤を施工するスタッフ", 935, 1400, "50% 55%"),
+    ("18-engine", "艶のあるイエローのボディとエンジンルーム", 2000, 1336, "50% 50%"),
+    ("19-taillight-rear", "磨き上げたイエローのリアまわり", 1400, 1400, "50% 50%"),
+    ("20-taillight-macro", "イエローのボディに映り込むテールランプ", 1200, 1200, "50% 50%"),
+    ("21-yellow-front", "ブースに置かれたイエローのフェラーリ", 935, 1400, "50% 55%"),
 ]
 
 
 def photo(index, eager=False):
-    name, alt = PHOTOS[index]
+    name, alt, w, h, pos = PHOTOS[index]
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
-    return f'<img src="/assets/img/photos/{name}.jpg" alt="{esc(alt)}" width="476" height="265" {load} decoding="async">'
+    focus = f' style="object-position:{pos}"' if pos != "50% 50%" else ""
+    return f'<img src="/assets/img/photos/{name}.jpg" alt="{esc(alt)}" width="{w}" height="{h}" {load} decoding="async"{focus}>'
 
 
 def works(n=None, filter_ui=False):
@@ -226,7 +239,7 @@ def works(n=None, filter_ui=False):
     else:
         # 素材が届くまでの仮表示。WORKS にデータを入れると自動で事例カードに置き換わる
         tiles = "".join(
-            f'<li class="work-card__img generated-photo">{photo(i)}</li>' for i in [5, 7, 8, 9, 11, 3][: n or 6]
+            f'<li class="work-card__img generated-photo">{photo(i)}</li>' for i in [17, 19, 16, 20, 18, 21][: n or 6]
         )
         return (
             f'<ul class="works-grid works-grid--pending">{tiles}</ul>'

@@ -1,4 +1,31 @@
-# 生成画像の配置
+# 写真・動画の配置
+
+## お店の実写・動画（Google Drive の素材から）
+
+Drive は読み取りのみで、元ファイルの削除・移動・変更はしていません。
+
+| ファイル | 元の場所（Drive） | 使用箇所 |
+|---|---|---|
+| `photos/12-studio-work.jpg` | 20240614フェラーリ/SNAP/修正後 -62 | TOPヒーロー、店舗情報 |
+| `photos/13-staff-car.jpg` | 同 -1 | CONCEPT 代表メッセージ欄 |
+| `photos/14-wipe.jpg` | 同 -6 | TOP 代表メッセージ欄 |
+| `photos/15-counseling.jpg` | 同 -14 | TOP 県外・お預かり |
+| `photos/16-wheel-check.jpg` | 同 -24 | 個別メニュー ホイール |
+| `photos/17-coating-apply.jpg` | 同 -37 | フル施工 COATING、施工事例 |
+| `photos/18-engine.jpg` | 同 -70 | フル施工ヒーロー、TOPサブスク帯 |
+| `photos/19-taillight-rear.jpg` | 同 -86 | TOP/MENU フル施工カード、部分コーティング |
+| `photos/20-taillight-macro.jpg` | 同 -92 | TOP/MENU 個別メニューカード |
+| `photos/21-yellow-front.jpg` | 同 -46 | TOP/MENU サブスクカード |
+| `video/work-ferrari.mp4` | 20240816_renew_GTS/Movie/素材 の「作業動画」系（縦） | TOP MOVIE |
+| `video/showcase-gts.mp4` | 同 納品データ「ベンツ 車 FHD」（縦） | TOP MOVIE |
+
+- 写真は長辺1400〜2400pxに縮小、動画は 540×960・12秒に再エンコード（元は1080×1920・40秒前後・約80MB）。各11MB。
+- 動画は画面に入ったときだけ読み込み・再生します（`data-lazy-video`）。
+- Drive のフェラーリ修正後フォルダには約100枚あります。差し替えたいときは同名で `photos/` に上書きしてください。
+- 人物が写っています。掲載してよいか、また代表（岩藤さん）かどうかは、お店に確認してください。
+- ほかに Drive には `GTS/Photo`（HIF/JPG）、`素材/画像` などもあります（未使用）。
+
+## AI生成画像（ChatGPT）
 
 ChatGPT（image_gen）で生成した12カット入りの画像（3列×4行）を、1カットずつのJPEGに切り分けて使っています。
 
