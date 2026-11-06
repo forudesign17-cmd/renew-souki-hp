@@ -121,10 +121,10 @@ WORKS_CATS = {"full": "フル施工", "subscription": "サブスク", "option": 
 ICONS = {
     "chevron": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>',
     "add": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"/></svg>',
-    "counsel": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 10h26v17H17l-7 6v-6H6z"/><path d="M36 17h6v16h-4v5l-6-5H20v-2"/><path d="M12 17h14M12 21h9"/></svg>',
+    "counsel": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><rect x="19" y="5" width="22" height="15" rx="2"/><path d="M24 10h12M24 14h12M23 20v5l5-5"/><path d="M13 9h-5v8h3v4l4-4"/><circle cx="14" cy="31" r="3.5"/><path d="M7 43v-3a7 7 0 0 1 14 0v3z"/><circle cx="34" cy="31" r="3.5"/><path d="M27 43v-3a7 7 0 0 1 14 0v3z"/></svg>',
     "skill": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l3.6 10.4L38 20l-10.4 3.6L24 34l-3.6-10.4L10 20l10.4-3.6z"/><path d="M37 32l1.5 4.5L43 38l-4.5 1.5L37 44l-1.5-4.5L31 38l4.5-1.5z"/></svg>',
-    "newcar": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 32V24l4-9h24l4 9v8z"/><path d="M8 24h32M13 32v4h5v-4M30 32v4h5v-4"/><circle cx="15" cy="28" r="1"/><circle cx="33" cy="28" r="1"/><path d="M36 5l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/></svg>',
-    "follow": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 26l8-6 8 2 6-3 8 5 6-2"/><path d="M12 20v14l8 4 5-3 4 3 6-5V25"/><path d="M17 11h14l2 4H15z"/><path d="M24 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg>',
+    "newcar": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 38V27l4-8h26l4 8v11z"/><path d="M7 27h34M12 19l2-5h18l2 5M11 38v3h6v-3M31 38v3h6v-3"/><circle cx="14" cy="32" r="2"/><circle cx="34" cy="32" r="2"/><path d="M20 32h8"/><circle cx="37" cy="10" r="6" fill="#000"/><path d="M34 10l2.2 2.2L40 8"/><path d="M8 6v6M5 9h6"/></svg>',
+    "follow": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 17v-3l3-4h10l3 4v3z"/><path d="M16 14h16M18 17v2h3v-2M27 17v2h3v-2"/><path d="M8 7v5M5.5 9.5h5M40 7v5M37.5 9.5h5"/><path d="M4 27l6-3 6 12-6 3zM44 27l-6-3-6 12 6 3z"/><path d="M16 24l6-2h5l5 3"/><path d="M16 36l7 5M21 33l6 5M26 30l5 4"/><path d="M22 22l-4 5 7 4 4-3"/></svg>',
     "keep": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l15 6v11c0 9.5-6.4 16.4-15 19-8.6-2.6-15-9.5-15-19V12z"/><path d="M17 24l5 5 9-10"/></svg>',
 }
 for _key, _label, _url in SNS:
