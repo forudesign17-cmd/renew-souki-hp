@@ -137,6 +137,25 @@
     });
   });
 
+  /* パララックス：data-parallax の要素を、スクロール量×係数だけ下へずらす（背景が遅れて動く） */
+  var pxEls = document.querySelectorAll("[data-parallax]");
+  if (pxEls.length && !reduce) {
+    var pxTicking = false;
+    var pxUpdate = function () {
+      pxTicking = false;
+      var y = window.scrollY;
+      pxEls.forEach(function (el) {
+        var host = el.parentElement;
+        if (y > host.offsetHeight) return; /* 画面外では計算しない */
+        el.style.transform = "translate3d(0," + (y * parseFloat(el.getAttribute("data-parallax"))).toFixed(1) + "px,0)";
+      });
+    };
+    window.addEventListener("scroll", function () {
+      if (!pxTicking) { pxTicking = true; requestAnimationFrame(pxUpdate); }
+    }, { passive: true });
+    pxUpdate();
+  }
+
   /* 施工事例の絞り込み */
   document.querySelectorAll(".chips").forEach(function (group) {
     var grid = group.nextElementSibling;

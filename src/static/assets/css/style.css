@@ -537,3 +537,6 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
 .sec--serif, .sec--serif * { font-family: var(--font-serif); }
 .sec--serif svg, .sec--serif svg * { font-family: inherit; }
 .sec--serif .brand-sans { font-family: var(--font-sans); }
+
+/* パララックス：ヒーロー背景を余分に伸ばし、スクロールに合わせて main.js が下へずらす */
+.js .hero__media[data-parallax] { bottom: -35%; will-change: transform; }
