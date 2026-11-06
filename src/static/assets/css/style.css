@@ -588,4 +588,10 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
 :root { --line-green: #06c755; }
 .rn-button.rn-button--line { --btn-bg: var(--line-green); --btn-fg: var(--on-ink); }
 .sp-bar a[data-track="line_click"] { background: var(--line-green); }
-.contact-alt a[data-track="line_click"] { background: var(--line-green); color: var(--on-ink); }
+/* お問い合わせページのSNSボタン：各SNSのブランドカラー */
+.contact-alt a { color: var(--on-ink); transition: transform .35s var(--ease), box-shadow .35s var(--ease), filter .35s; }
+.contact-alt a:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.22); filter: brightness(1.06); }
+.contact-alt a[data-track="line_click"] { background: var(--line-green); }
+.contact-alt a[data-track="sns_instagram"] { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.contact-alt a[data-track="sns_x"] { background: #000; }
+@media (prefers-reduced-motion: reduce) { .contact-alt a { transition: none; } .contact-alt a:hover { transform: none; } }
