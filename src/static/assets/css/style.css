@@ -563,3 +563,4 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
 /* 明朝体セクション（CONCEPTページの本文） */
 .sec--serif, .sec--serif * { font-family: var(--font-serif); }
 .sec--serif svg, .sec--serif svg * { font-family: inherit; }
+.sec--serif .brand-sans { font-family: var(--font-sans); }
