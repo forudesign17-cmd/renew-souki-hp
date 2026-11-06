@@ -8,7 +8,7 @@ Drive は読み取りのみで、元ファイルの削除・移動・変更は�
 |---|---|---|
 | `photos/12-studio-work.jpg` | 20240614フェラーリ/SNAP/修正後 -62 | TOPヒーロー、店舗情報 |
 | `photos/13-staff-car.jpg` | 20240616フェラーリ修正後-13 | CONCEPT 代表メッセージ欄 |
-| `photos/14-wipe.jpg` | 同 -6 | TOP 代表メッセージ欄 |
+| `photos/14-wipe.jpg` | 20240616フェラーリ修正後-1（差し替え済み） | TOP 代表メッセージ欄 |
 | `photos/15-counseling.jpg` | 同 -14 | TOP 県外・お預かり |
 | `photos/16-wheel-check.jpg` | 同 -24 | 個別メニュー ホイール |
 | `photos/17-coating-apply.jpg` | 同 -37 | フル施工 COATING、施工事例 |
