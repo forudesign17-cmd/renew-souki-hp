@@ -552,3 +552,34 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
 
 /* パララックス：ヒーロー背景を余分に伸ばし、スクロールに合わせて main.js が下へずらす */
 .js .hero__media[data-parallax] { bottom: -35%; will-change: transform; }
+
+/* ---------- モーション：見出し／写真のカーテン／項目の順番表示 ---------- */
+/* 1. 見出し：罫線が中央から外へ伸び、文字が下からせり上がる */
+.js .sec__head.reveal .rn-section-title::before { transform: scaleX(0); transform-origin: right center; transition: transform 1.2s var(--ease) .2s; }
+.js .sec__head.reveal .rn-section-title::after { transform: scaleX(0); transform-origin: left center; transition: transform 1.2s var(--ease) .2s; }
+.js .sec__head.reveal.is-in .rn-section-title::before,
+.js .sec__head.reveal.is-in .rn-section-title::after { transform: scaleX(1); }
+.js .sec__head.reveal .rn-section-title > span { display: inline-block; clip-path: inset(0 0 100% 0); transform: translateY(55%); transition: clip-path 1s var(--ease) .1s, transform 1s var(--ease) .1s; }
+.js .sec__head.reveal.is-in .rn-section-title > span { clip-path: inset(-12% -12% -12% -12%); transform: none; }
+
+/* 2. 写真：上から下へカーテンが開くように現れ、写真が少し縮んで収まる */
+.js .curtain { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s var(--ease); }
+.js .curtain > img { transform: scale(1.18); transition: transform 1.8s var(--ease); }
+.js .curtain.is-in { clip-path: inset(0 0 0 0); }
+.js .curtain.is-in > img { transform: none; }
+
+/* 5. 項目の順番表示：0.15秒ずつずらす／アイコンの円は拡大しながら */
+.js .reasons .reason.reveal:nth-child(2), .js .points--list .point.reveal:nth-child(2) { transition-delay: .15s; }
+.js .reasons .reason.reveal:nth-child(3), .js .points--list .point.reveal:nth-child(3) { transition-delay: .3s; }
+.js .reason.reveal .reason__icon { transform: scale(.55); transition: transform 1s var(--ease) .25s; }
+.js .reason.reveal:nth-child(2) .reason__icon { transition-delay: .4s; }
+.js .reason.reveal:nth-child(3) .reason__icon { transition-delay: .55s; }
+.js .reason.reveal.is-in .reason__icon { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .sec__head.reveal .rn-section-title::before, .js .sec__head.reveal .rn-section-title::after { transform: none; transition: none; }
+  .js .sec__head.reveal .rn-section-title > span { clip-path: none; transform: none; transition: none; }
+  .js .curtain, .js .curtain > img { clip-path: none; transform: none; transition: none; }
+  .js .reason.reveal .reason__icon { transform: none; transition: none; }
+  .js .reasons .reason.reveal, .js .points--list .point.reveal { transition-delay: 0s; }
+}

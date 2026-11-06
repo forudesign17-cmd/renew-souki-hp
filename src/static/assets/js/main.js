@@ -61,7 +61,9 @@
   }
 
   /* ふわっとフェードイン */
-  var targets = document.querySelectorAll(".reveal");
+  /* 大きな写真はカーテン表示の対象にする */
+  document.querySelectorAll(".story__photo, .split__media").forEach(function (el) { el.classList.add("curtain"); });
+  var targets = document.querySelectorAll(".reveal, .curtain");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
