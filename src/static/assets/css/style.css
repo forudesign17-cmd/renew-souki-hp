@@ -345,7 +345,7 @@ body.is-locked { overflow: hidden; }
 .rn-faq-badge { width: 28px; height: 28px; flex: none; display: grid; place-items: center; background: var(--text-sub); color: var(--on-ink); font-weight: 700; font-size: 16px; font-family: var(--font-display); }
 .rn-faq-text { flex: 1; font-size: 16px; line-height: 1.5; font-weight: 700; letter-spacing: 0.05em; color: var(--text); }
 .rn-faq-q .i { transition: transform .3s var(--ease); }
-.rn-faq-item[open] .rn-faq-q .i { transform: rotate(45deg); }
+.rn-faq-item[open]:not(.is-closing) .rn-faq-q .i { transform: rotate(45deg); }
 .rn-faq-a { padding: 0 16px 24px 56px; font-size: 14px; line-height: 1.9; color: var(--text); }
 .rn-faq-a strong { display: block; font-weight: 700; margin-bottom: 4px; color: var(--ink); }
 .faq-cat + .faq-cat { margin-top: var(--space-64); }

@@ -96,6 +96,41 @@
     videos.forEach(function (v) { vio.observe(v); });
   }
 
+  /* FAQ：開閉をなめらかに（高さ＋フェード）。動きを減らす設定のときは即時 */
+  document.querySelectorAll(".rn-faq-item").forEach(function (item) {
+    var summary = item.querySelector("summary");
+    var panel = item.querySelector(".rn-faq-a");
+    if (!summary || !panel || reduce || !panel.animate) return;
+    var running = null;
+    function run(from, to, done) {
+      if (running) running.cancel();
+      panel.style.overflow = "hidden";
+      running = panel.animate(
+        [{ height: from + "px", opacity: from ? 1 : 0 }, { height: to + "px", opacity: to ? 1 : 0 }],
+        { duration: 320, easing: "cubic-bezier(.22,.61,.36,1)" }
+      );
+      running.onfinish = function () {
+        running = null;
+        panel.style.overflow = "";
+        done();
+      };
+      running.oncancel = function () { panel.style.overflow = ""; };
+    }
+    summary.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (item.open && !item.classList.contains("is-closing")) {
+        item.classList.add("is-closing");
+        run(panel.offsetHeight, 0, function () {
+          item.open = false;
+          item.classList.remove("is-closing");
+        });
+      } else if (!item.open) {
+        item.open = true;
+        run(0, panel.scrollHeight, function () {});
+      }
+    });
+  });
+
   /* 施工事例の絞り込み */
   document.querySelectorAll(".chips").forEach(function (group) {
     var grid = group.nextElementSibling;
