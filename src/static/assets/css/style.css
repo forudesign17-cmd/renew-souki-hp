@@ -210,7 +210,7 @@ body.is-locked { overflow: hidden; }
 .hero__sub span { display: inline-block; }
 .hero__area::before { content: "｜"; margin: 0 1em; }
 @media (max-width: 540px) { .hero__sub span { display: block; } .hero__area::before { content: none; } }
-.hero__souki { position: absolute; right: clamp(24px, 8vw, 120px); top: 50%; transform: translateY(-50%); display: flex; flex-direction: row-reverse; align-items: flex-start; gap: 22px; }
+.hero__souki { position: absolute; right: max(clamp(24px, 8vw, 120px), calc((100% - 1280px) / 2 + 24px)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: row-reverse; align-items: flex-start; gap: 22px; }
 .hero__souki b, .hero__souki i { writing-mode: vertical-rl; font-style: normal; }
 .hero__souki b { font-size: clamp(36px, 5vw, 56px); font-weight: 500; letter-spacing: .3em; line-height: 1; }
 .hero__souki i { order: 2; font-size: 12px; letter-spacing: .4em; line-height: 1; padding-top: 6px; }
