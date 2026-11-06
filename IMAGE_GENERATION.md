@@ -10,7 +10,7 @@ Drive は読み取りのみで、元ファイルの削除・移動・変更は�
 | `photos/13-staff-car.jpg` | 20240616フェラーリ修正後-13 | CONCEPT 代表メッセージ欄 |
 | `photos/14-wipe.jpg` | 20240616フェラーリ修正後-1（差し替え済み） | TOP 代表メッセージ欄 |
 | `photos/15-counseling.jpg` | 同 -14 | TOP 県外・お預かり |
-| `photos/16-wheel-check.jpg` | 同 -24 | 個別メニュー ホイール |
+| `photos/16-wheel-check.jpg` | Drive「DSC00577.JPG」 | 個別メニュー ホイール |
 | `photos/17-coating-apply.jpg` | Drive「DSC00536.ARW」（RAWからJPEGに変換） | フル施工 COATING、施工事例 |
 | `photos/18-engine.jpg` | 同 -70 | フル施工ヒーロー、TOPサブスク帯 |
 | `photos/19-taillight-rear.jpg` | 同 -86 | TOP/MENU フル施工カード、部分コーティング |
