@@ -418,6 +418,12 @@ body.is-locked { overflow: hidden; }
 .point h3 { margin: 16px 0 10px; font-size: 18px; letter-spacing: .1em; color: var(--ink); }
 .point p { font-size: 14px; }
 .points--2 { grid-template-columns: 1fr 1fr; }
+.points--list { display: block; border-top: 1px solid var(--rule, #999); border-bottom: 1px solid var(--rule, #999); }
+.points--list .point, .sec:not(.sec--gray) .points--list .point { background: none; padding: 40px 8px; display: grid; grid-template-columns: auto 1fr; column-gap: 16px; align-items: baseline; }
+.points--list .point + .point { border-top: 1px solid rgba(0,0,0,.15); }
+.points--list .point__num { font-size: 20px; letter-spacing: .1em; }
+.points--list .point h3 { margin: 0 0 14px; font-size: 20px; }
+.points--list .point p:not(.point__num) { grid-column: 2; font-size: 15px; line-height: 2; }
 @media (max-width: 840px) { .points, .points--2 { grid-template-columns: 1fr; } }
 
 .steps-inline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: s; margin-top: 40px; }
