@@ -14,7 +14,7 @@ Drive は読み取りのみで、元ファイルの削除・移動・変更は�
 | `photos/17-coating-apply.jpg` | 同 -37 | フル施工 COATING、施工事例 |
 | `photos/18-engine.jpg` | 同 -70 | フル施工ヒーロー、TOPサブスク帯 |
 | `photos/19-taillight-rear.jpg` | 同 -86 | TOP/MENU フル施工カード、部分コーティング |
-| `photos/20-taillight-macro.jpg` | 同 -92 | TOP/MENU 個別メニューカード |
+| `photos/20-wheel-care.jpg` | Drive「1-106.jpg」（差し替え済み） | TOP/MENU 個別メニューカード |
 | `photos/21-yellow-front.jpg` | 同 -46 | TOP/MENU サブスクカード |
 | `video/work-ferrari.mp4` | 20240816_renew_GTS/Movie/素材 の「作業動画」系（縦） | TOP MOVIE |
 | `video/showcase-gts.mp4` | 同 納品データ「ベンツ 車 FHD」（縦） | TOP MOVIE |
