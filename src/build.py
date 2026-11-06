@@ -243,6 +243,17 @@ INSTAGRAM_POSTS = [
 ]
 
 
+# tools/fetch_instagram.py が作る一覧があれば、それを使う（自動更新）。無ければ上の INSTAGRAM_POSTS（手動）
+_ig_json = ROOT / "instagram_posts.json"
+if _ig_json.exists():
+    try:
+        _auto = [tuple(x) for x in json.loads(_ig_json.read_text(encoding="utf-8"))]
+        if len(_auto) >= 3:
+            INSTAGRAM_POSTS = _auto
+    except (ValueError, TypeError):
+        pass
+
+
 def insta_grid():
     tiles = "".join(
         f'<a class="ig-tile" href="{esc(url or INSTAGRAM_URL)}" target="_blank" rel="noopener" data-track="sns_instagram">'

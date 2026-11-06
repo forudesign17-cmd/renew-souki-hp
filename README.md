@@ -41,7 +41,8 @@ BASE_PATH=/test python3 src/build.py
 | GA4・Search Console | `src/build.py` の `SITE["ga4_id"]`・`SITE["gsc_verification"]` |
 | 施工事例（WORKS）の公開 | 現在は**非公開**（ページ・ナビ・TOP等のリンクをすべて出さない）。`src/build.py` の `WORKS` にデータを入れたあと、`SITE["works_public"]` を `True` にしてビルドすると、WORKSページとすべての導線が一度に現れる |
 | 施工事例の追加 | `src/build.py` の `WORKS` にデータを追加し、写真を `src/static/assets/img/works/` に置く。TOP・各メニュー・WORKSに自動で反映 |
-| TOPのInstagram（6枚のタイル） | 画像を `src/static/assets/img/instagram/` に置き、`src/build.py` の `INSTAGRAM_POSTS`（ファイル名・代替テキスト・投稿URL）を書き換える。URLを指定しなければプロフィールへ |
+| TOPのInstagram（6枚のタイル）の自動更新 | `docs/INSTAGRAM_AUTO_UPDATE.md` の手順でトークンを登録すると、毎日自動で最新の投稿になる（登録するまでは手動の画像のまま） |
+| TOPのInstagram（6枚のタイル）を手動で差し替える | 画像を `src/static/assets/img/instagram/` に置き、`src/build.py` の `INSTAGRAM_POSTS`（ファイル名・代替テキスト・投稿URL）を書き換える。URLを指定しなければプロフィールへ |
 | FAQの文言 | `src/build.py` の `FAQ` |
 | 写真の差し替え | 各ページの `{{photo:N}}`。生成画像の一覧と配置方法は `IMAGE_GENERATION.md` を参照 |
 
@@ -68,4 +69,5 @@ BASE_PATH=/test python3 src/build.py
 - [ ] プライバシーポリシーの制定日
 - [ ] ロゴのSVG化（いまは元サイトから取得した600px幅のPNG。ベクターデータをお店から受け取ったら差し替え）
 - [ ] OGP画像（`ogp.jpg`）は仮でロゴのみ。写真入りの1200×630に差し替え推奨
+- [ ] Instagramの自動更新：`docs/INSTAGRAM_AUTO_UPDATE.md` の手順でトークンを登録する（本番サーバーへの自動反映は別途FTP設定が必要）
 - [ ] 公開時：`.htaccess` の301リダイレクト確認、sitemap.xml の送信（仕様書 7・12 のチェックリスト）

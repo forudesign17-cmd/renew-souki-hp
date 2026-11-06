@@ -9,3 +9,6 @@ ReNEW-design-system.zip
 .claude/
 .DS_Store
 __pycache__/
+
+# Instagram自動取得で生成される一覧（Actionsで毎回作る）
+src/instagram_posts.json

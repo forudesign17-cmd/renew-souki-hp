@@ -1,10 +1,13 @@
-# GitHub Pages に確認用サイトを公開する（main への push で自動更新）
+# GitHub Pages に確認用サイトを公開する（main への push と、毎日1回の定期実行で自動更新）
+# 定期実行のときは、Instagram の最新投稿を取得してから作り直す（Secret IG_ACCESS_TOKEN が設定されているときだけ）
 name: Deploy preview to GitHub Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "0 18 * * *"   # 毎日 3:00（日本時間）
 
 permissions:
   contents: read
@@ -23,6 +26,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Instagramの最新投稿を取得（失敗しても公開は続ける）
+        continue-on-error: true
+        run: python3 tools/fetch_instagram.py
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
       - name: Build
         run: python3 src/build.py
         env:
