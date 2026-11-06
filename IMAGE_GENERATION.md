@@ -13,7 +13,7 @@ Drive は読み取りのみで、元ファイルの削除・移動・変更は�
 | `photos/16-wheel-check.jpg` | Drive「DSC00577.JPG」 | 個別メニュー ホイール |
 | `photos/17-coating-apply.jpg` | Drive「DSC00536.ARW」（RAWからJPEGに変換） | フル施工 COATING、施工事例 |
 | `photos/18-engine.jpg` | 同 -70 | フル施工ヒーロー、TOPサブスク帯 |
-| `photos/19-taillight-rear.jpg` | 同 -86 | TOP/MENU フル施工カード、部分コーティング |
+| `photos/19-door-sill.jpg` | Drive「DSC00659.ARW」（RAWからJPEGに変換。向きは画像のEXIFに従う縦長） | 個別メニュー 部分コーティング |
 | `photos/20-wheel-care.jpg` | Drive「1-106.jpg」（差し替え済み） | TOP/MENU 個別メニューカード |
 | `photos/21-yellow-front.jpg` | 同 -46 | TOP/MENU サブスクカード |
 | `photos/22-full-coating.jpg` | Drive「1-1.jpg」 | TOP/MENU FULL COATING カード |
