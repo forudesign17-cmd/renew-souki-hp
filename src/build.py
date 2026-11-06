@@ -33,6 +33,7 @@ SITE = {
     "ga4_id": "",  # 例: "G-XXXXXXXXXX"。空なら GA4 タグを出力しない
     "gsc_verification": "",  # 現行サイトの google-site-verification の値を引き継ぐ
     # サブスクの枠表示。満枠になったら None にすると「キャンセル待ち受付中」に切り替わる
+    "works_public": False,  # 施工事例（WORKS）を公開するか。WORKS にデータがたまったら True にする
     "sub_slots": "先着5台限定",
 }
 
@@ -56,6 +57,8 @@ NAV = [  # (英字, 和文, URL, 子メニュー)
     ("CONTACT", "お問い合わせ", "/contact/", []),
 ]
 HEADER_NAV = ["CONCEPT", "MENU", "WORKS", "FAQ", "ABOUT"]
+if not SITE["works_public"]:  # 非公開の間はナビから外す
+    NAV = [n for n in NAV if n[0] != "WORKS"]
 
 # ---------------------------------------------------------------------------
 # よくあるご質問（TOP・FAQ・各メニューページで共用）
@@ -377,6 +380,10 @@ def expand(body):
     body = re.sub(r"<!--@faq ([\w,]+)-->", lambda m: faq_items(m.group(1).split(",")), body)
     body = body.replace("<!--@faq-all-->", faq_all())
     body = body.replace("<!--@flow-->", flow()).replace("<!--@flow-compact-->", flow(compact=True))
+    if SITE["works_public"]:
+        body = body.replace("<!--@works-only-->", "").replace("<!--@/works-only-->", "")
+    else:
+        body = re.sub(r"<!--@works-only-->.*?<!--@/works-only-->\n?", "", body, flags=re.S)
     body = re.sub(r"<!--@works( \d+)?( filter)?-->", lambda m: works(int(m.group(1)) if m.group(1) else None, bool(m.group(2))), body)
     body = body.replace("<!--@sub-slots-->", sub_slots())
     body = body.replace("<!--@sns-->", sns_links())
@@ -468,6 +475,8 @@ def build():
         if not m:
             raise SystemExit(f"{rel}: 先頭にメタ情報のコメントがありません")
         meta = json.loads(m.group(1))
+        if rel.parts[0] == "works" and not SITE["works_public"]:
+            continue  # 施工事例ページは公開するまで出力しない
         body = text[m.end():]
         if rel.name == "index.html":
             path = "/" + (str(rel.parent) + "/" if str(rel.parent) != "." else "")

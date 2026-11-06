@@ -39,6 +39,7 @@ BASE_PATH=/test python3 src/build.py
 |---|---|
 | サブスクの枠表示（「先着5台限定」／満枠） | `src/build.py` の `SITE["sub_slots"]`。`None` にすると「キャンセル待ち受付中」に切り替わる |
 | GA4・Search Console | `src/build.py` の `SITE["ga4_id"]`・`SITE["gsc_verification"]` |
+| 施工事例（WORKS）の公開 | 現在は**非公開**（ページ・ナビ・TOP等のリンクをすべて出さない）。`src/build.py` の `WORKS` にデータを入れたあと、`SITE["works_public"]` を `True` にしてビルドすると、WORKSページとすべての導線が一度に現れる |
 | 施工事例の追加 | `src/build.py` の `WORKS` にデータを追加し、写真を `src/static/assets/img/works/` に置く。TOP・各メニュー・WORKSに自動で反映 |
 | FAQの文言 | `src/build.py` の `FAQ` |
 | フォームの通知先メール | `src/static/contact/config.php` |
@@ -60,7 +61,7 @@ BASE_PATH=/test python3 src/build.py
 - [ ] ヒーロー用画像の高解像度化（いまは約480px幅で、全画面表示ではぼやける。`IMAGE_GENERATION.md` 参照）
 - [ ] 人物が写る写真・動画の掲載可否をお店に確認（TOPのメッセージ欄の人物が代表かどうかも）
 - [ ] 代表・実際の施工事例などの実写素材への差し替え（現在はAI生成イメージを明記）
-- [ ] 施工事例のデータ（`WORKS`）：いまは「準備中」の仮カードを表示中
+- [ ] 施工事例のデータ（`WORKS`）を貯めて、たまったら `SITE["works_public"] = True` で公開（それまでWORKSは非公開）
 - [ ] 営業時間・定休日（`/about/`）
 - [ ] サブスクの契約条件（最低期間・解約・対象車種）と現在の空き枠
 - [ ] 個別メニューの正式なメニュー名・説明（いまは仕様書の例）
