@@ -108,7 +108,7 @@ button { font: inherit; color: inherit; }
 .rn-button:hover::before, .header-cta:hover::before { transform: translateX(0); }
 .rn-button {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  width: var(--button-width); max-width: 100%; height: var(--button-height); padding: 0 40px; white-space: nowrap;
+  width: min(var(--button-width), calc(100vw - 48px)); max-width: 100%; height: var(--button-height); padding: 0 40px; white-space: nowrap;
   font-family: var(--font-display); font-size: 17px; line-height: 1.4; font-weight: 700; letter-spacing: 0.09em;
 }
 .rn-button .i { position: absolute; right: 18px; top: 50%; width: 18px; height: 10px; margin-top: -5px; transition: transform .45s var(--ease); }
@@ -610,3 +610,17 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
   border-color: transparent;
 }
 .rn-button.rn-button--instagram:hover { border-color: var(--btn-bg); }
+
+/* 小さいスマホ（〜360px）：ボタンの文字が枠に収まるよう余白と文字サイズを詰める */
+@media (max-width: 360px) {
+  .rn-button { padding: 0 34px 0 14px; font-size: 15px; letter-spacing: .06em; }
+  .rn-button .i { right: 12px; }
+}
+
+/* 比較表：スマホでは項目名の列を固定し、横スクロールできることをヒントで示す */
+.table-hint { display: none; margin: 0 0 8px; font-size: 12px; letter-spacing: .1em; color: var(--text-sub); text-align: right; }
+@media (max-width: 840px) {
+  .table-hint { display: block; }
+  .compare tbody th { position: sticky; left: 0; z-index: 1; width: 96px; box-shadow: 1px 0 0 var(--section); }
+  .compare thead td { position: sticky; left: 0; z-index: 1; background: var(--surface); }
+}
