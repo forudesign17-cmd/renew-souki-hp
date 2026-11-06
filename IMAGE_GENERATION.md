@@ -44,7 +44,7 @@ ChatGPT（image_gen）で生成した12カット入りの画像（3列×4行）�
 | 3 | 03-wash-staff（Drive「スクリーンショット 2023-12-20 15.01.26.png」に差し替え済み） | フル施工のWASH |
 | 4 | 04-polish-work（Drive「植物棚-37.jpg」に差し替え済み） | フル施工のPOLISH |
 | 5 | 05-coating | COATING、部分コーティング |
-| 6 | 06-headlight | 個別メニューのカード、ヘッドライト |
+| 6 | 06-headlight（Drive「クラウン-1.jpg」に差し替え済み） | 個別メニューのヘッドライト |
 | 7 | 07-glass-water | ガラス撥水 |
 | 8 | 08-wheel | ホイール |
 | 9 | 09-interior | 内装 |
