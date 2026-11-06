@@ -3,16 +3,18 @@
 
 RewriteEngine On
 
+# 旧URL（STUDIO）→ 新URL（301）
+# ※ https・wwwの統一より「先」に書き、転送先を https の完全なURLにしている。
+#   http や www 付きで旧URLにアクセスされても、1回の転送で最終のURLに着く（検索エンジンに優しい）。
+RewriteRule ^fullconstrution/?$ https://renew-souki.jp/menu/full/ [R=301,L]
+RewriteRule ^subscription/?$ https://renew-souki.jp/menu/subscription/ [R=301,L]
+RewriteRule ^qanda/?$ https://renew-souki.jp/faq/ [R=301,L]
+RewriteRule ^(concept|menu|contact)$ https://renew-souki.jp/$1/ [R=301,L]
+
 # https・wwwなしに統一
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^(.*)$ https://renew-souki.jp/$1 [R=301,L]
-
-# 旧URL（STUDIO）→ 新URL
-RewriteRule ^fullconstrution/?$ /menu/full/ [R=301,L]
-RewriteRule ^subscription/?$ /menu/subscription/ [R=301,L]
-RewriteRule ^qanda/?$ /faq/ [R=301,L]
-RewriteRule ^(concept|menu|contact)$ /$1/ [R=301,L]
 
 ErrorDocument 404 /404.html
 
@@ -29,6 +31,7 @@ AddDefaultCharset UTF-8
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType video/mp4 "access plus 1 year"
 </IfModule>
 

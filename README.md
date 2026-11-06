@@ -62,8 +62,23 @@ BASE_PATH=/test python3 src/build.py
 - [x] ヒーロー用画像の高解像度化：TOPは実写（2400px幅）、サブスクは実写（2000px四方）に差し替え済み
 - [ ] 代表・実際の施工事例などの実写素材への差し替え（現在はAI生成イメージを明記）
 - [ ] 施工事例のデータ（`WORKS`）を貯めて、たまったら `SITE["works_public"] = True` で公開（それまでWORKSは非公開）
-- [ ] プライバシーポリシーの制定日
-- [ ] ロゴのSVG化（いまは元サイトから取得した600px幅のPNG。ベクターデータをお店から受け取ったら差し替え）
+- [x] プライバシーポリシーの制定日：公開日に設定する仕組みを用意（公開日に `SITE["privacy_date"]` を入れる。下の「公開日の手順」参照）
+- [x] ロゴのSVG化：元の600px幅PNGから自動トレースして作成（`tools/trace_logo.py`）。数倍以上に拡大すると輪郭に小さな乱れが出るので、印刷物などに使う場合は、お店から元のベクターデータ（Illustrator等）を受け取って差し替える
 - [ ] OGP画像（`ogp.jpg`）は仮でロゴのみ。写真入りの1200×630に差し替え推奨
 - [ ] Instagramの自動更新：お客様のアカウントなので、`docs/INSTAGRAM_CLIENT_GUIDE.md`（お客様向け案内）に沿って連携し、`docs/INSTAGRAM_AUTO_UPDATE.md` の手順でトークンを登録する（本番サーバーへの自動反映は別途FTP設定が必要）
-- [ ] 公開時：`.htaccess` の301リダイレクト確認、sitemap.xml の送信（仕様書 7・12 のチェックリスト）
+- [ ] 公開日：下の「公開日の手順」に沿って実施（`.htaccess` の転送確認・sitemap送信などを含む）
+
+## 公開日の手順（レンタルサーバーへの切り替え）
+
+1. **設定を入れる**（`src/build.py` の `SITE`）
+   - `privacy_date`：公開日を `"2026年〇月〇日"` の形で入れる（プライバシーポリシーの制定日になる）
+   - `ga4_id`：計測する場合は GA4 の測定ID（`G-XXXXXXXXXX`）
+   - `gsc_verification`：現行サイトから引き継ぎ済み（`LQzBxYGap8Ev0xBrfK_HmG-XuSWJJDDmi1ICG3eRCoU`）
+2. **本番用にビルド**：`python3 src/build.py`（`BASE_PATH` や `PREVIEW` を付けない。付けると確認用になり、検索に出ない設定になる）
+3. **アップロード**：`public_html/` の中身をサーバーの公開フォルダへ。**`.htaccess` も忘れずに**（隠しファイルなので注意）
+4. **DNS・SSL**：ドメインをレンタルサーバーへ向け、無料SSLを設定する。**`www.renew-souki.jp` にもDNS（Aレコード or CNAME）とSSLを設定する**（wwwなしへの転送に必要）
+5. **点検**：`python3 tools/check_launch.py` を実行して、❌が無いことを確認する（旧URLの転送、https・wwwの統一、サイトマップ、検索設定、404など約30項目）
+6. **Search Console**：サイトマップ `https://renew-souki.jp/sitemap.xml` を送信する（確認タグは設置済み）
+7. **STUDIO** は、切り替え後1〜2週間ほど様子を見てから公開停止・解約する
+
+> サイトマップの更新日（`lastmod`）は、各ページのファイルを最後にコミットした日になる。本番用のビルドは、履歴のあるこのリポジトリで行うこと。

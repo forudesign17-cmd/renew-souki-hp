@@ -16,6 +16,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -31,7 +32,8 @@ SITE = {
     "url": "https://renew-souki.jp",
     "name": "ReNEW.",
     "ga4_id": "",  # 例: "G-XXXXXXXXXX"。空なら GA4 タグを出力しない
-    "gsc_verification": "",  # 現行サイトの google-site-verification の値を引き継ぐ
+    "gsc_verification": "LQzBxYGap8Ev0xBrfK_HmG-XuSWJJDDmi1ICG3eRCoU",  # 現行サイト(renew-souki.jp)の google-site-verification を引き継ぎ
+    "privacy_date": "",  # プライバシーポリシーの制定日＝公開日。公開する日に "2026年〇月〇日" の形で入れる（空のままなら制定日は表示しない）
     # サブスクの枠表示。満枠になったら None にすると「キャンセル待ち受付中」に切り替わる
     "works_public": False,  # 施工事例（WORKS）を公開するか。WORKS にデータがたまったら True にする
     "sub_slots": "先着5台限定",
@@ -317,8 +319,8 @@ def header(is_home):
     return f"""<header class="site-header{' site-header--over' if is_home else ''}" data-header>
   <div class="site-header__inner">
     <a class="site-logo" href="/" aria-label="ReNEW. 車の美容院 トップへ">
-      <img class="site-logo__black" src="/assets/img/renew-logo-black.png" alt="ReNEW." width="600" height="150">
-      <img class="site-logo__white" src="/assets/img/renew-logo-white.png" alt="" width="600" height="150">
+      <img class="site-logo__black" src="/assets/img/renew-logo-black.svg" alt="ReNEW." width="600" height="150">
+      <img class="site-logo__white" src="/assets/img/renew-logo-black.svg" alt="" width="600" height="150">
       <span class="site-logo__tag">車の美容院</span>
     </a>
     <nav class="gnav" aria-label="メインメニュー"><ul>{links}</ul></nav>
@@ -355,7 +357,7 @@ def footer():
     return f"""<footer class="site-footer">
   <div class="container">
     <nav class="site-footer__nav" aria-label="フッターメニュー"><ul>{''.join(cols)}</ul></nav>
-    <a class="site-footer__logo" href="/"><img src="/assets/img/renew-logo-black.png" alt="ReNEW." width="600" height="150" loading="lazy"></a>
+    <a class="site-footer__logo" href="/"><img src="/assets/img/renew-logo-black.svg" alt="ReNEW." width="600" height="150" loading="lazy"></a>
     <p class="site-footer__name">SOUKI -創綺- 車の美容院</p>
     <p class="site-footer__addr">岡山県和気町（詳しい所在地はご予約確定後にご案内します）</p>
     {sns_links()}
@@ -430,6 +432,7 @@ def expand(body):
     body = body.replace("<!--@sns-->", sns_links())
     body = re.sub(r"\{\{photo:(\d+)(:eager)?\}\}", lambda m: photo(int(m.group(1)), bool(m.group(2))), body)
     body = body.replace("{{line_url}}", LINE_URL)
+    body = body.replace("{{privacy_date}}", f'<p class="note" style="margin-top:48px">制定日：{esc(SITE["privacy_date"])}</p>' if SITE["privacy_date"] else "")
     return body
 
 
@@ -504,11 +507,25 @@ META_RE = re.compile(r"\A<!--(\{.*?\})-->\s*", re.S)
 BUILD_ID = datetime.datetime.now().strftime("%Y%m%d%H%M")
 
 
+def page_lastmod(src):
+    """sitemap の lastmod：そのページのファイルを最後に変更(コミット)した日。履歴が取れなければ今日。
+    （ビルドの日付を全ページに入れると、毎回「全ページが更新された」ことになり不正確になるため）"""
+    try:
+        r = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(src)], cwd=ROOT.parent, capture_output=True, text=True, timeout=10)
+        d = r.stdout.strip()
+        if r.returncode == 0 and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d):
+            return d
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return datetime.date.today().isoformat()
+
+
 def build():
     if OUT.exists():
         shutil.rmtree(OUT)
     shutil.copytree(ROOT / "static", OUT)
     sitemap = []
+    lastmods = {}
     for src in sorted((ROOT / "pages").rglob("*.html")):
         rel = src.relative_to(ROOT / "pages")
         text = src.read_text(encoding="utf-8")
@@ -528,8 +545,8 @@ def build():
         dest.write_text(with_base(render(meta, body, path)), encoding="utf-8")
         if not meta.get("noindex"):
             sitemap.append(path)
-    today = datetime.date.today().isoformat()
-    urls = "".join(f"<url><loc>{SITE['url']}{p}</loc><lastmod>{today}</lastmod></url>" for p in sitemap)
+            lastmods[path] = page_lastmod(src)
+    urls = "".join(f"<url><loc>{SITE['url']}{p}</loc><lastmod>{lastmods[p]}</lastmod></url>" for p in sitemap)
     (OUT / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n',
         encoding="utf-8",

@@ -126,7 +126,7 @@ body.is-home { padding-top: 0; }
 .site-header__inner { height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--space-24); display: flex; align-items: center; gap: 40px; }
 .site-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; margin-right: auto; color: var(--ink); }
 .site-logo img { width: 136px; }
-.site-logo__white { display: none; }
+.site-logo__white { display: none; filter: brightness(0) invert(1); } /* 白いロゴ＝黒いSVGを白に反転 */
 .site-logo__tag { font-size: 12px; letter-spacing: .2em; padding-left: 14px; border-left: 1px solid currentColor; line-height: 1.2; }
 .gnav ul { display: flex; gap: 32px; }
 .gnav a { text-decoration: none; font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: .1em; color: var(--ink); position: relative; padding: 6px 0; }
