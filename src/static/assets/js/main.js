@@ -102,13 +102,19 @@
     var panel = item.querySelector(".rn-faq-a");
     if (!summary || !panel || reduce || !panel.animate) return;
     var running = null;
-    function run(from, to, done) {
+    function run(opening, done) {
       if (running) running.cancel();
+      var pad = parseFloat(getComputedStyle(panel).paddingBottom) || 0;
+      var full = panel.scrollHeight;
+      var cur = panel.offsetHeight;
+      var open = { height: full + "px", paddingBottom: pad + "px", opacity: 1 };
+      var shut = { height: "0px", paddingBottom: "0px", opacity: 0 };
+      var from = opening ? shut : { height: cur + "px", paddingBottom: pad + "px", opacity: 1 };
       panel.style.overflow = "hidden";
-      running = panel.animate(
-        [{ height: from + "px", opacity: from ? 1 : 0 }, { height: to + "px", opacity: to ? 1 : 0 }],
-        { duration: 320, easing: "cubic-bezier(.22,.61,.36,1)" }
-      );
+      running = panel.animate(opening ? [from, open] : [from, shut], {
+        duration: 320,
+        easing: "cubic-bezier(.22,.61,.36,1)"
+      });
       running.onfinish = function () {
         running = null;
         panel.style.overflow = "";
@@ -120,13 +126,13 @@
       e.preventDefault();
       if (item.open && !item.classList.contains("is-closing")) {
         item.classList.add("is-closing");
-        run(panel.offsetHeight, 0, function () {
+        run(false, function () {
           item.open = false;
           item.classList.remove("is-closing");
         });
       } else if (!item.open) {
         item.open = true;
-        run(0, panel.scrollHeight, function () {});
+        run(true, function () {});
       }
     });
   });
