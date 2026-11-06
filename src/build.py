@@ -158,11 +158,11 @@ def sns_links(cls="rn-sns"):
 
 def faq_items(ids):
     out = []
-    for i in ids:
+    for n, i in enumerate(ids, 1):
         q, lead, body = FAQ[i]
         out.append(
-            f'<details class="rn-faq-item" id="faq-{i}"><summary class="rn-faq-q"><span class="rn-faq-badge" aria-hidden="true">Q</span>'
-            f'<span class="rn-faq-text">{esc(q)}</span>{ICONS["add"]}</summary>'
+            f'<details class="rn-faq-item" id="faq-{i}"><summary class="rn-faq-q"><span class="rn-faq-badge" aria-hidden="true">{n:02d}</span>'
+            f'<span class="rn-faq-text">{esc(q)}</span><span class="rn-faq-chev" aria-hidden="true"></span></summary>'
             f'<div class="rn-faq-a"><strong>{esc(lead)}</strong>{esc(body)}</div></details>'
         )
     return '<div class="rn-faq">' + "".join(out) + "</div>"

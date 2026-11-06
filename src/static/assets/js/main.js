@@ -102,14 +102,15 @@
     var panel = item.querySelector(".rn-faq-a");
     if (!summary || !panel || reduce || !panel.animate) return;
     var running = null;
+    function px(name) { return parseFloat(getComputedStyle(panel)[name]) || 0; }
     function run(opening, done) {
       if (running) running.cancel();
-      var pad = parseFloat(getComputedStyle(panel).paddingBottom) || 0;
+      var pt = px("paddingTop"), pb = px("paddingBottom"), mb = px("marginBottom");
       var full = panel.scrollHeight;
       var cur = panel.offsetHeight;
-      var open = { height: full + "px", paddingBottom: pad + "px", opacity: 1 };
-      var shut = { height: "0px", paddingBottom: "0px", opacity: 0 };
-      var from = opening ? shut : { height: cur + "px", paddingBottom: pad + "px", opacity: 1 };
+      var open = { height: full + "px", paddingTop: pt + "px", paddingBottom: pb + "px", marginBottom: mb + "px", opacity: 1 };
+      var shut = { height: "0px", paddingTop: "0px", paddingBottom: "0px", marginBottom: "0px", opacity: 0 };
+      var from = opening ? shut : { height: cur + "px", paddingTop: pt + "px", paddingBottom: pb + "px", marginBottom: mb + "px", opacity: 1 };
       panel.style.overflow = "hidden";
       running = panel.animate(opening ? [from, open] : [from, shut], {
         duration: 320,
