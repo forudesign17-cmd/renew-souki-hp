@@ -230,6 +230,29 @@ PHOTOS = [
 ]
 
 
+# Instagram のタイル表示（TOP）。投稿を差し替えるときは、画像を src/static/assets/img/instagram/ に置いて、ここを書き換える。
+# 各項目：(ファイル名, 代替テキスト, 投稿のURL。指定しなければプロフィール)
+INSTAGRAM_URL = "https://www.instagram.com/renew.bc/"
+INSTAGRAM_POSTS = [
+    ("insta-01.jpg", "ヘキサゴンの照明の下に停まるブラックのSUV", None),
+    ("insta-02.jpg", "ヘキサゴンの照明の下に停まるホワイトのスポーツハッチ", None),
+    ("insta-03.jpg", "ヘキサゴンの照明の下に停まるブルーのスーパーハイトワゴン", None),
+    ("insta-04.jpg", "ヘキサゴンの照明の下に停まるイエローの軽自動車", None),
+    ("insta-05.jpg", "ヘキサゴンの照明の下に停まるネイビーのセダン", None),
+    ("insta-06.jpg", "ヘキサゴンの照明の下に停まるホワイトのクーペ", None),
+]
+
+
+def insta_grid():
+    tiles = "".join(
+        f'<a class="ig-tile" href="{esc(url or INSTAGRAM_URL)}" target="_blank" rel="noopener" data-track="sns_instagram">'
+        f'<img src="/assets/img/instagram/{f}" alt="{esc(alt)}" width="720" height="720" loading="lazy" decoding="async">'
+        f'<span class="ig-ov" aria-hidden="true">{ICONS["instagram"]}<b>VIEW</b></span></a>'
+        for f, alt, url in INSTAGRAM_POSTS
+    )
+    return f'<div class="ig-grid reveal">{tiles}</div>'
+
+
 def photo(index, eager=False):
     name, alt, w, h, pos = PHOTOS[index]
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
@@ -391,6 +414,7 @@ def expand(body):
     else:
         body = re.sub(r"<!--@works-only-->.*?<!--@/works-only-->\n?", "", body, flags=re.S)
     body = re.sub(r"<!--@works( \d+)?( filter)?-->", lambda m: works(int(m.group(1)) if m.group(1) else None, bool(m.group(2))), body)
+    body = body.replace("<!--@insta-->", insta_grid())
     body = body.replace("<!--@sub-slots-->", sub_slots())
     body = body.replace("<!--@sns-->", sns_links())
     body = re.sub(r"\{\{photo:(\d+)(:eager)?\}\}", lambda m: photo(int(m.group(1)), bool(m.group(2))), body)
