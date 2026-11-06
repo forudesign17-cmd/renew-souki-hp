@@ -104,7 +104,7 @@ FAQ_CATEGORIES = [
 # ご依頼の流れ（TOP・FLOW・MENUで共用）
 # ---------------------------------------------------------------------------
 FLOW = [
-    ("お問い合わせ", "フォーム・LINE・Instagram／XのDMからご連絡ください。ご相談は24時間受付中です。"),
+    ("お問い合わせ", "LINE・Instagram／XのDMからご連絡ください。ご相談は24時間受付中です。"),
     ("無料カウンセリング・お見積り", "愛車の状態を確認し、なりたい綺麗をお伺いしたうえで、施工内容と明瞭なお見積りをご提案します。"),
     ("ご予約・ご来店", "ご予約確定後に所在地をご案内します。お預かりする愛車を盗難などから守るため、住所は公開していません。"),
     ("お預かり・施工", "お預かり中は代車をご用意しています。代車が不要な場合は、最寄りの駅・空港まで送迎いたします。"),
@@ -299,7 +299,7 @@ def cta():
   <div class="container">
     <h2 class="cta__label" id="cta-title">＼ まずはお気軽にご相談から ／</h2>
     <p class="cta__text">愛車の状態を拝見し、最適なプランとお見積りをご提案します。<br class="pc">ご相談は24時間受付中。カウンセリング・お見積りは無料です。</p>
-    <div class="cta__buttons">{button('フォームで相談する', '/contact/')}{button('LINEで相談する', LINE_URL, ' data-track="line_click"')}</div>
+    <div class="cta__buttons">{button('LINEで相談する', LINE_URL, ' data-track="line_click"')}{button('SNSのDMで相談する', '/contact/')}</div>
     {sns_links()}
   </div>
 </section>"""

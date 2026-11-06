@@ -162,45 +162,4 @@
     if (t) track(t, { link_url: a.href });
     if (a.protocol === "tel:") track("tel_tap", { link_url: a.href });
   });
-
-  /* お問い合わせフォーム：入力 → 確認 → 送信 */
-  var form = document.querySelector("[data-contact-form]");
-  var confirmBox = document.querySelector("[data-confirm]");
-  if (form && confirmBox) {
-    var list = confirmBox.querySelector("[data-confirm-list]");
-    form.addEventListener("submit", function (e) {
-      if (form.dataset.confirmed === "1") {
-        track("form_submit", { form: "contact" });
-        return;
-      }
-      e.preventDefault();
-      if (!form.reportValidity()) return;
-      list.innerHTML = "";
-      form.querySelectorAll("[data-label]").forEach(function (field) {
-        var value = field.tagName === "SELECT" ? field.options[field.selectedIndex].text : field.value.trim();
-        var row = document.createElement("div");
-        var dt = document.createElement("dt");
-        var dd = document.createElement("dd");
-        dt.textContent = field.getAttribute("data-label");
-        dd.textContent = value || "（未入力）";
-        row.appendChild(dt);
-        row.appendChild(dd);
-        list.appendChild(row);
-      });
-      form.hidden = true;
-      confirmBox.hidden = false;
-      confirmBox.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    confirmBox.querySelector("[data-back]").addEventListener("click", function () {
-      confirmBox.hidden = true;
-      form.hidden = false;
-      form.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    confirmBox.querySelector("[data-send]").addEventListener("click", function () {
-      this.disabled = true;
-      this.textContent = "送信中…";
-      form.dataset.confirmed = "1";
-      form.requestSubmit ? form.requestSubmit() : form.submit();
-    });
-  }
 })();

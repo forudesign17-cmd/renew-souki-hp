@@ -476,43 +476,16 @@ body.is-locked { overflow: hidden; }
 .option__price { margin-top: 14px; font-size: 13px; color: var(--text-sub); }
 @media (max-width: 840px) { .option-list { grid-template-columns: 1fr; } }
 
-/* ---------- form ---------- */
-.form { max-width: 760px; margin: 0 auto; }
-.form__row { display: grid; grid-template-columns: 220px 1fr; gap: 8px 24px; padding: 20px 0; border-bottom: 1px solid var(--section); }
-.form__row:first-of-type { border-top: 1px solid var(--section); }
-.form__label { font-weight: 600; color: var(--ink); padding-top: 10px; letter-spacing: .06em; }
-.req, .opt { display: inline-block; margin-left: 8px; padding: 0 8px; font-size: 11px; line-height: 20px; font-weight: 600; vertical-align: 2px; }
-.req { background: var(--ink); color: var(--on-ink); }
-.opt { border: 1px solid var(--line); color: var(--text-sub); line-height: 18px; }
-.form input[type="text"], .form input[type="tel"], .form input[type="email"], .form select, .form textarea {
-  width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 0; background: var(--surface);
-  font: inherit; font-size: 16px; color: var(--text); -webkit-appearance: none; appearance: none;
-}
-.form select { background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 40px; }
-.form textarea { min-height: 200px; resize: vertical; }
-.form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid var(--ink); outline-offset: 0; border-color: var(--ink); }
-.form__hint { font-size: 12px; color: var(--text-sub); margin-top: 6px; }
-.form__error { font-size: 13px; color: #b00020; margin-top: 6px; }
-.form__agree { text-align: center; margin: 40px 0 32px; }
-.form__agree label { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; }
-.form__agree input { width: 20px; height: 20px; accent-color: var(--ink); }
-.form__submit { text-align: center; }
-.form__submit .rn-button { font-family: var(--font-sans); }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-@media (max-width: 540px) { .form__row { grid-template-columns: 1fr; } .form__label { padding-top: 0; } }
-
-.confirm { max-width: 760px; margin: 0 auto; }
-.confirm h2 { text-align: center; margin-bottom: 24px; }
-.confirm .info dd { white-space: pre-wrap; word-break: break-word; }
-.confirm__buttons { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-.rn-button--ghost { background: var(--surface); color: var(--ink); border: 1px solid var(--ink); box-shadow: none; }
-
+/* ---------- contact ---------- */
+.contact-tips { max-width: 560px; margin: 0 auto; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.contact-tips li { padding: 14px 8px 14px 28px; border-bottom: 1px solid var(--section); position: relative; }
+.contact-tips li::before { content: ""; position: absolute; left: 8px; top: 50%; width: 8px; height: 8px; background: var(--ink); transform: translateY(-50%); }
 .contact-alt { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; margin: 40px auto 0; }
 .contact-alt a { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px; background: var(--surface); text-decoration: none; color: var(--ink); font-weight: 600; letter-spacing: .08em; font-size: 14px; }
 .contact-alt .i { width: 20px; height: 20px; }
 @media (max-width: 540px) { .contact-alt { grid-template-columns: 1fr; } }
 
-/* ---------- 404 / thanks ---------- */
+/* ---------- 404 ---------- */
 .message { text-align: center; }
 .message p { margin: 24px auto 40px; max-width: 560px; }
 .message ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 24px; margin-top: 40px; font-size: 14px; }

@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /contact/send.php
-Disallow: /contact/thanks/
+Allow: /
 
 Sitemap: https://renew-souki.jp/sitemap.xml
