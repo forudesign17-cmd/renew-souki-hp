@@ -65,5 +65,5 @@ BASE_PATH=/test python3 src/build.py
 - [ ] プライバシーポリシーの制定日
 - [ ] ロゴのSVG化（いまは元サイトから取得した600px幅のPNG。ベクターデータをお店から受け取ったら差し替え）
 - [ ] OGP画像（`ogp.jpg`）は仮でロゴのみ。写真入りの1200×630に差し替え推奨
-- [ ] Instagramの自動更新：`docs/INSTAGRAM_AUTO_UPDATE.md` の手順でトークンを登録する（本番サーバーへの自動反映は別途FTP設定が必要）
+- [ ] Instagramの自動更新：お客様のアカウントなので、`docs/INSTAGRAM_CLIENT_GUIDE.md`（お客様向け案内）に沿って連携し、`docs/INSTAGRAM_AUTO_UPDATE.md` の手順でトークンを登録する（本番サーバーへの自動反映は別途FTP設定が必要）
 - [ ] 公開時：`.htaccess` の301リダイレクト確認、sitemap.xml の送信（仕様書 7・12 のチェックリスト）
