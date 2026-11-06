@@ -47,7 +47,7 @@ ChatGPT（image_gen）で生成した12カット入りの画像（3列×4行）�
 | 6 | 06-headlight（Drive「クラウン-1.jpg」に差し替え済み） | 個別メニューのヘッドライト |
 | 7 | 07-glass-water | ガラス撥水 |
 | 8 | 08-wheel | ホイール |
-| 9 | 09-interior | 内装 |
+| 9 | 09-interior（Drive「1-26.jpg」に差し替え済み） | 個別メニューの内装 |
 | 10 | 10-booth | TOPサブスク帯、店舗情報 |
 | 11 | 11-tools | 店舗情報 |
 
