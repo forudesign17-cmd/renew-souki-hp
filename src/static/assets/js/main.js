@@ -159,6 +159,34 @@
     pxUpdate();
   }
 
+  /* タブ切り替え（比較）：クリックと矢印キーで切り替え */
+  document.querySelectorAll("[data-tabs]").forEach(function (root) {
+    var tabs = [].slice.call(root.querySelectorAll('[role="tab"]'));
+    var panels = [].slice.call(root.querySelectorAll('[role="tabpanel"]'));
+    function select(i, focus) {
+      tabs.forEach(function (t, k) {
+        var on = k === i;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        panels[k].classList.toggle("is-active", on);
+      });
+      if (focus) tabs[i].focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(i, false); });
+      t.addEventListener("keydown", function (e) {
+        var n = tabs.length, k = null;
+        if (e.key === "ArrowRight") k = (i + 1) % n;
+        else if (e.key === "ArrowLeft") k = (i - 1 + n) % n;
+        else if (e.key === "Home") k = 0;
+        else if (e.key === "End") k = n - 1;
+        if (k !== null) { e.preventDefault(); select(k, true); }
+      });
+    });
+    select(0, false);
+  });
+
   /* 施工事例の絞り込み */
   document.querySelectorAll(".chips").forEach(function (group) {
     var grid = group.nextElementSibling;

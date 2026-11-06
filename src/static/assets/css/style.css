@@ -457,12 +457,6 @@ body.is-locked { overflow: hidden; }
 }
 
 /* 比較表 */
-.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.compare { width: 100%; min-width: 640px; border-collapse: collapse; background: var(--surface); font-size: 14px; }
-.compare th, .compare td { padding: 18px 20px; border: 1px solid var(--section); vertical-align: top; text-align: left; }
-.compare thead th { background: var(--ink); color: var(--on-ink); font-weight: 600; letter-spacing: .1em; text-align: center; }
-.compare tbody th { width: 120px; background: var(--surface-soft); color: var(--ink); font-weight: 600; white-space: nowrap; }
-.compare b { font-family: var(--font-display); font-size: 18px; color: var(--ink); }
 
 /* 情報テーブル */
 .info { border-top: 1px solid var(--line); }
@@ -617,10 +611,32 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
   .rn-button .i { right: 12px; }
 }
 
-/* 比較表：スマホでは項目名の列を固定し、横スクロールできることをヒントで示す */
-.table-hint { display: none; margin: 0 0 8px; font-size: 12px; letter-spacing: .1em; color: var(--text-sub); text-align: right; }
-@media (max-width: 840px) {
-  .table-hint { display: block; }
-  .compare tbody th { position: sticky; left: 0; z-index: 1; width: 96px; box-shadow: 1px 0 0 var(--section); }
-  .compare thead td { position: sticky; left: 0; z-index: 1; background: var(--surface); }
+
+/* ---------- 比較：タブ切り替え（説明文・4項目・詳細ボタン） ---------- */
+.tabs { max-width: 760px; margin: 0 auto; }
+.tabs__list { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 2px solid var(--ink); }
+.tabs__tab { appearance: none; border: 0; border-right: 1px solid var(--line-soft, #d6d6d6); background: var(--surface); color: var(--text-sub); font: inherit; font-weight: 700; letter-spacing: .14em; padding: 18px 8px; cursor: pointer; transition: background .35s var(--ease), color .35s var(--ease); }
+.tabs__tab:last-child { border-right: 0; }
+.tabs__tab:hover { color: var(--ink); }
+.tabs__tab:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; }
+.tabs__tab.is-active { background: var(--ink); color: var(--on-ink); }
+.tabs__panel { background: var(--surface); padding: 32px 36px 40px; }
+.js .tabs__panel { display: none; }
+.js .tabs__panel.is-active { display: block; animation: tabs-in .5s var(--ease); }
+.tabs__panel + .tabs__panel { margin-top: 24px; } /* JSが無いときは3つを縦に並べる */
+.js .tabs__panel + .tabs__panel { margin-top: 0; }
+.tabs__lead { margin: 0 0 8px; font-size: 15px; line-height: 2; color: var(--text); }
+.tabs__dl { margin: 0; }
+.tabs__dl > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid #ececec; }
+.tabs__dl dt { padding-top: 3px; font-size: 12px; letter-spacing: .2em; color: var(--text-sub); }
+.tabs__dl dd { margin: 0; font-size: 15px; }
+.tabs__dl b { font-family: var(--font-display); font-size: 1.5em; color: var(--ink); }
+.tabs__more { margin-top: 28px; text-align: center; }
+@keyframes tabs-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (max-width: 540px) {
+  .tabs__panel { padding: 24px 18px 30px; }
+  .tabs__tab { padding: 16px 4px; font-size: 14px; letter-spacing: .06em; }
+  .tabs__dl > div { grid-template-columns: 1fr; gap: 2px; }
 }
+@media (max-width: 360px) { .tabs__tab { font-size: 13px; letter-spacing: .02em; padding: 16px 2px; white-space: nowrap; } }
+@media (prefers-reduced-motion: reduce) { .js .tabs__panel.is-active { animation: none; } .tabs__tab { transition: none; } }

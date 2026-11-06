@@ -52,19 +52,42 @@
       <h2 class="rn-section-title"><span>COMPARE</span></h2>
       <p class="rn-section-sub" id="compare-title">3つのメニューの比較</p>
     </div>
-    <p class="table-hint" aria-hidden="true">横にスクロールして比較できます →</p>
-    <div class="table-wrap reveal">
-      <table class="compare">
-        <thead>
-          <tr><td></td><th scope="col">サブスク</th><th scope="col">フル施工</th><th scope="col">個別メニュー</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">こんな方に</th><td>常に綺麗を保ちたい</td><td>一度で最上級に仕上げたい</td><td>気になる箇所だけ施工したい</td></tr>
-          <tr><th scope="row">内容</th><td>毎月の入庫で、その月に最適なメニューを施工</td><td>WASH＋POLISH＋COATING</td><td>ヘッドライト・ガラス・ホイール・内装など</td></tr>
-          <tr><th scope="row">料金</th><td>月額 <b>32,000</b>円（税込）</td><td>カウンセリング後にお見積り</td><td>カウンセリング後にお見積り</td></tr>
-          <tr><th scope="row">期間</th><td>継続</td><td>内容によります</td><td>内容によります</td></tr>
-        </tbody>
-      </table>
+    <div class="tabs reveal" data-tabs>
+      <div class="tabs__list" role="tablist" aria-label="3つのメニューの比較">
+        <button type="button" class="tabs__tab is-active" role="tab" id="tab-sub" aria-controls="panel-sub" aria-selected="true">サブスク</button>
+        <button type="button" class="tabs__tab" role="tab" id="tab-full" aria-controls="panel-full" aria-selected="false">フル施工</button>
+        <button type="button" class="tabs__tab" role="tab" id="tab-opt" aria-controls="panel-opt" aria-selected="false">個別メニュー</button>
+      </div>
+      <div class="tabs__panel is-active" role="tabpanel" id="panel-sub" aria-labelledby="tab-sub">
+        <p class="tabs__lead">最初のカウンセリングで目指す「綺麗」を決め、毎月の入庫で、車の美容師がその月に最適なメニューを施工します。月額32,000円（税込）で、愛車の綺麗をアップグレードし続けます。</p>
+        <dl class="tabs__dl">
+          <div><dt>こんな方に</dt><dd>常に綺麗を保ちたい</dd></div>
+          <div><dt>内容</dt><dd>毎月の入庫で、その月に最適なメニューを施工</dd></div>
+          <div><dt>料金</dt><dd>月額 <b>32,000</b>円（税込）</dd></div>
+          <div><dt>期間</dt><dd>継続</dd></div>
+        </dl>
+        <div class="tabs__more">{{btn:詳しく見る|/menu/subscription/}}</div>
+      </div>
+      <div class="tabs__panel" role="tabpanel" id="panel-full" aria-labelledby="tab-full">
+        <p class="tabs__lead">WASH・POLISH・COATINGの3工程で、愛車を新車よりも綺麗に仕上げます。マット塗装・ラッピング・プロテクションフィルム施工車にも対応しています。</p>
+        <dl class="tabs__dl">
+          <div><dt>こんな方に</dt><dd>一度で最上級に仕上げたい</dd></div>
+          <div><dt>内容</dt><dd>WASH＋POLISH＋COATING</dd></div>
+          <div><dt>料金</dt><dd>カウンセリング後にお見積り</dd></div>
+          <div><dt>期間</dt><dd>内容によります</dd></div>
+        </dl>
+        <div class="tabs__more">{{btn:詳しく見る|/menu/full/}}</div>
+      </div>
+      <div class="tabs__panel" role="tabpanel" id="panel-opt" aria-labelledby="tab-opt">
+        <p class="tabs__lead">ヘッドライト・ガラスの撥水・ホイール・内装・部分コーティング・他社コーティング車のメンテナンスなど、気になる箇所だけの施工も承ります。</p>
+        <dl class="tabs__dl">
+          <div><dt>こんな方に</dt><dd>気になる箇所だけ施工したい</dd></div>
+          <div><dt>内容</dt><dd>ヘッドライト・ガラス・ホイール・内装など</dd></div>
+          <div><dt>料金</dt><dd>カウンセリング後にお見積り</dd></div>
+          <div><dt>期間</dt><dd>内容によります</dd></div>
+        </dl>
+        <div class="tabs__more">{{btn:詳しく見る|/menu/option/}}</div>
+      </div>
     </div>
   </div>
 </section>
