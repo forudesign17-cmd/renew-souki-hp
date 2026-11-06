@@ -122,7 +122,7 @@ WORKS_CATS = {"full": "フル施工", "subscription": "サブスク", "option": 
 # アイコン（SNSは simple-icons、その他は Material Icons と同じ形をSVGで）
 # ---------------------------------------------------------------------------
 ICONS = {
-    "chevron": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>',
+    "chevron": '<svg class="i" viewBox="0 0 18 10" aria-hidden="true"><path d="M0 5h17M12.5 1l4.5 4-4.5 4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>',
     "add": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"/></svg>',
     "counsel": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><rect x="19" y="5" width="22" height="15" rx="2"/><path d="M24 10h12M24 14h12M23 20v5l5-5"/><path d="M13 9h-5v8h3v4l4-4"/><circle cx="14" cy="31" r="3.5"/><path d="M7 43v-3a7 7 0 0 1 14 0v3z"/><circle cx="34" cy="31" r="3.5"/><path d="M27 43v-3a7 7 0 0 1 14 0v3z"/></svg>',
     "skill": '<svg class="i-line" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l3.6 10.4L38 20l-10.4 3.6L24 34l-3.6-10.4L10 20l10.4-3.6z"/><path d="M37 32l1.5 4.5L43 38l-4.5 1.5L37 44l-1.5-4.5L31 38l4.5-1.5z"/></svg>',
