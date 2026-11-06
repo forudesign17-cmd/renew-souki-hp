@@ -64,7 +64,7 @@ BASE_PATH=/test python3 src/build.py
 - [ ] 施工事例のデータ（`WORKS`）を貯めて、たまったら `SITE["works_public"] = True` で公開（それまでWORKSは非公開）
 - [x] プライバシーポリシーの制定日：公開日に設定する仕組みを用意（公開日に `SITE["privacy_date"]` を入れる。下の「公開日の手順」参照）
 - [x] ロゴのSVG化：元の600px幅PNGから自動トレースして作成（`tools/trace_logo.py`）。数倍以上に拡大すると輪郭に小さな乱れが出るので、印刷物などに使う場合は、お店から元のベクターデータ（Illustrator等）を受け取って差し替える
-- [ ] OGP画像（`ogp.jpg`）は仮でロゴのみ。写真入りの1200×630に差し替え推奨
+- [x] OGP画像（`ogp.jpg`）：TOPのヒーロー写真＋ロゴ＋キャッチコピーの1200×630を作成済み（`swift tools/make_ogp.swift` で再作成できる）
 - [ ] Instagramの自動更新：お客様のアカウントなので、`docs/INSTAGRAM_CLIENT_GUIDE.md`（お客様向け案内）に沿って連携し、`docs/INSTAGRAM_AUTO_UPDATE.md` の手順でトークンを登録する（本番サーバーへの自動反映は別途FTP設定が必要）
 - [ ] 公開日：下の「公開日の手順」に沿って実施（`.htaccess` の転送確認・sitemap送信などを含む）
 
