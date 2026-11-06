@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ボタンデザイン 3案｜ReNEW.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Urbanist:wght@500;600;700&display=swap">
+<style>
+:root{--ink:#000;--text:#333;--text-sub:#555;--on-ink:#fff;--section:#e6e6e6;--line:#797a7b;--sans:"Noto Sans JP",sans-serif;--display:Urbanist,"Noto Sans JP",sans-serif;--ease:cubic-bezier(.22,.61,.36,1);--line-green:#06c755}
+*{box-sizing:border-box} body{margin:0;font-family:var(--sans);color:var(--text);line-height:1.85;letter-spacing:.04em;background:#fff}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+.intro{padding:56px 0 24px;text-align:center}.intro h1{font-size:22px;margin:0 0 8px;letter-spacing:.12em}.intro p{margin:0;font-size:13px;color:var(--text-sub)}
+.pattern{padding:72px 0}.pattern.alt{background:var(--section)}
+.tag{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}.tag b{font-family:var(--display);font-size:40px;font-weight:700;line-height:1}.tag span{font-size:18px;font-weight:700;letter-spacing:.1em}
+.desc{font-size:13px;color:var(--text-sub);margin:0 0 36px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px 32px;align-items:start}
+.cell small{display:block;font-size:11px;color:var(--text-sub);letter-spacing:.12em;margin-bottom:10px}
+.pair{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.arrow{width:18px;height:10px;flex:none}
+
+/* ===== 現行（比較用） ===== */
+.now{position:relative;display:flex;align-items:center;justify-content:center;width:329px;max-width:100%;height:50px;background:var(--ink);color:var(--on-ink);font-weight:700;letter-spacing:.12em;font-size:14px;box-shadow:3px 3px 4px rgba(28,27,27,.53)}
+
+/* ===== A: 塗りワイプ（黒→白反転、矢印が走る） ===== */
+.a-btn{position:relative;display:flex;align-items:center;justify-content:center;width:329px;max-width:100%;height:54px;border:1px solid var(--ink);background:var(--ink);color:var(--on-ink);font-weight:700;font-size:14px;letter-spacing:.14em;overflow:hidden;isolation:isolate;transition:color .45s var(--ease)}
+.a-btn::before{content:"";position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .5s var(--ease);z-index:-1}
+.a-btn .arrow{position:absolute;right:20px;transition:transform .45s var(--ease)}
+.a-btn:hover{color:var(--ink)}.a-btn:hover::before{transform:translateX(0)}.a-btn:hover .arrow{transform:translateX(6px)}
+.a-btn.ghost{background:#fff;color:var(--ink)}.a-btn.ghost::before{background:var(--ink)}.a-btn.ghost:hover{color:var(--on-ink)}
+.a-btn.line{background:var(--line-green);border-color:var(--line-green)}.a-btn.line::before{background:#fff}.a-btn.line:hover{color:var(--line-green)}
+
+/* ===== B: ミニマル（枠なし・テキスト＋伸びる矢印線） ===== */
+.b-btn{display:inline-flex;align-items:center;gap:18px;padding:14px 0;font-weight:700;font-size:15px;letter-spacing:.16em;color:var(--ink);border-bottom:1px solid var(--ink);position:relative}
+.b-btn .ln{position:relative;display:block;width:44px;height:1px;background:var(--ink);transition:width .45s var(--ease)}
+.b-btn .ln::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid var(--ink);border-right:1px solid var(--ink);transform:rotate(45deg)}
+.b-btn:hover .ln{width:76px}
+.b-btn.solid{border:0;background:var(--ink);color:var(--on-ink);padding:17px 28px;gap:22px}
+.b-btn.solid .ln,.b-btn.solid .ln::after{background:var(--on-ink);border-color:var(--on-ink)}
+.b-btn.solid .ln::after{background:transparent}
+.b-btn.solid:hover{background:#222}
+.b-btn.solid:hover .ln{width:64px}
+.b-btn.line{border-bottom-color:var(--line-green);color:var(--line-green)}.b-btn.line .ln,.b-btn.line .ln::after{border-color:var(--line-green)}.b-btn.line .ln{background:var(--line-green)}.b-btn.line .ln::after{background:transparent}
+
+/* ===== C: 二重枠（ずれた枠線が重なる／矢印は区切りボックス） ===== */
+.c-btn{position:relative;display:flex;align-items:stretch;width:329px;max-width:100%;height:54px;background:var(--ink);color:var(--on-ink);font-weight:700;font-size:14px;letter-spacing:.14em;transition:transform .35s var(--ease)}
+.c-btn::before{content:"";position:absolute;inset:0;border:1px solid var(--ink);transform:translate(6px,6px);transition:transform .35s var(--ease);pointer-events:none}
+.c-btn .lbl{flex:1;display:flex;align-items:center;justify-content:center}
+.c-btn .ico{width:54px;display:grid;place-items:center;border-left:1px solid rgba(255,255,255,.35);transition:background .35s,color .35s}
+.c-btn:hover{transform:translate(-3px,-3px)}.c-btn:hover::before{transform:translate(9px,9px)}
+.c-btn:hover .ico{background:#fff;color:var(--ink)}
+.c-btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.c-btn.ghost .ico{border-left-color:var(--ink)}.c-btn.ghost:hover .ico{background:var(--ink);color:#fff}
+.c-btn.line{background:var(--line-green)}.c-btn.line::before{border-color:var(--line-green)}.c-btn.line:hover .ico{color:var(--line-green)}
+
+.hdr{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 22px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;letter-spacing:.12em}
+@media (max-width:540px){.now,.a-btn,.c-btn{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ar" viewBox="0 0 18 10"><path d="M0 5h17M12.5 1l4.5 4-4.5 4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol></svg>
+
+<header class="intro wrap">
+  <h1>ボタンデザイン 新デザイン 3案</h1>
+  <p>マウスを乗せると、ホバーの動きを確認できます。各案に「黒（メイン）／白（サブ）／LINE」の3種類を並べています。</p>
+</header>
+
+<section class="pattern">
+  <div class="wrap">
+    <div class="tag"><b>現行</b><span>参考：いまのサイトのボタン</span></div>
+    <p class="desc">黒＋右下の影。比較用に載せています。</p>
+    <div class="row"><div class="cell"><small>メイン</small><a class="now" href="#">LINEで相談する</a></div></div>
+  </div>
+</section>
+
+<section class="pattern alt">
+  <div class="wrap">
+    <div class="tag"><b>A</b><span>塗りワイプ</span></div>
+    <p class="desc">ホバーで白（黒）がスッと塗り替わり、矢印が右へ走る。影をなくしてフラットに、輪郭線でシャープに見せる案。</p>
+    <div class="row">
+      <div class="cell"><small>メイン（黒）</small><a class="a-btn" href="#">LINEで相談する<svg class="arrow"><use href="#ar"/></svg></a></div>
+      <div class="cell"><small>サブ（白）</small><a class="a-btn ghost" href="#">コンセプトを見る<svg class="arrow"><use href="#ar"/></svg></a></div>
+      <div class="cell"><small>LINE専用</small><a class="a-btn line" href="#">LINEで相談する<svg class="arrow"><use href="#ar"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="pattern">
+  <div class="wrap">
+    <div class="tag"><b>B</b><span>ミニマル（線の矢印）</span></div>
+    <p class="desc">箱をやめて、文字と下線＋矢印の線だけで見せる静かな案。ホバーで矢印の線がのびる。黒ベタ版は、角を持たない細身のボタン。</p>
+    <div class="row">
+      <div class="cell"><small>テキスト型</small><a class="b-btn" href="#">コンセプトを見る<span class="ln"></span></a></div>
+      <div class="cell"><small>黒ベタ型</small><a class="b-btn solid" href="#">無料カウンセリング<span class="ln"></span></a></div>
+      <div class="cell"><small>LINE専用</small><a class="b-btn line" href="#">LINEで相談する<span class="ln"></span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="pattern alt">
+  <div class="wrap">
+    <div class="tag"><b>C</b><span>二重枠（エディトリアル）</span></div>
+    <p class="desc">ずらした枠線が背後に重なる、雑誌風の案。矢印は区切りボックスに入れ、ホバーでボタンが浮いて反転する。</p>
+    <div class="row">
+      <div class="cell"><small>メイン（黒）</small><a class="c-btn" href="#"><span class="lbl">LINEで相談する</span><span class="ico"><svg class="arrow"><use href="#ar"/></svg></span></a></div>
+      <div class="cell"><small>サブ（白）</small><a class="c-btn ghost" href="#"><span class="lbl">コンセプトを見る</span><span class="ico"><svg class="arrow"><use href="#ar"/></svg></span></a></div>
+      <div class="cell"><small>LINE専用</small><a class="c-btn line" href="#"><span class="lbl">LINEで相談する</span><span class="ico"><svg class="arrow"><use href="#ar"/></svg></span></a></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>FAQアコーディオン 3案｜ReNEW.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=Urbanist:wght@500;600;700&display=swap">
+<style>
+:root {
+  --ink:#000; --text:#333; --text-sub:#555; --on-ink:#fff; --surface:#fff; --section:#e6e6e6; --line:#797a7b;
+  --sans:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif; --serif:"Noto Serif JP","Hiragino Mincho ProN",serif; --display:Urbanist,"Noto Sans JP",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box} body{margin:0;font-family:var(--sans);color:var(--text);line-height:1.85;letter-spacing:.04em;background:#fff}
+summary{list-style:none;cursor:pointer} summary::-webkit-details-marker{display:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+.intro{padding:56px 0 24px;text-align:center}
+.intro h1{font-size:22px;margin:0 0 8px;letter-spacing:.12em}
+.intro p{margin:0;font-size:13px;color:var(--text-sub)}
+.pattern{padding:72px 0}
+.pattern:nth-of-type(even){background:var(--section)}
+.tag{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.tag b{font-family:var(--display);font-size:40px;font-weight:700;line-height:1}
+.tag span{font-size:18px;font-weight:700;letter-spacing:.1em}
+.desc{font-size:13px;color:var(--text-sub);margin:0 0 36px}
+.faq{max-width:720px;margin:0 auto}
+.plus{position:relative;width:18px;height:18px;flex:none}
+.plus::before,.plus::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;background:currentColor;transform:translateY(-50%);transition:transform .35s var(--ease)}
+.plus::after{transform:translateY(-50%) rotate(90deg)}
+details[open]:not(.is-closing) .plus::after{transform:translateY(-50%) rotate(0)}
+
+/* ============ A: ミニマル罫線（カードなし・明朝のQ） ============ */
+.a .faq{border-top:1px solid var(--ink)}
+.a details{border-bottom:1px solid #bbb}
+.a summary{display:flex;align-items:center;gap:20px;padding:26px 8px}
+.a .num{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.14em;color:var(--text-sub);width:28px;flex:none}
+.a .q{flex:1;font-size:17px;font-weight:600;letter-spacing:.06em;color:var(--ink);line-height:1.6}
+.a summary:hover .q{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.a .ans{padding:0 48px 30px 56px;font-size:14.5px;line-height:2}
+.a .ans strong{display:block;color:var(--ink);margin-bottom:6px;font-weight:700}
+
+/* ============ B: ブラック反転（開いた項目が黒に） ============ */
+.b .faq{display:grid;gap:12px}
+.b details{background:var(--surface);transition:background .4s var(--ease),color .4s var(--ease);box-shadow:3px 3px 4px rgba(28,27,27,.18)}
+.b details[open]:not(.is-closing){background:var(--ink);color:var(--on-ink)}
+.b summary{display:flex;align-items:center;gap:16px;padding:20px 22px}
+.b .badge{width:32px;height:32px;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:16px;background:var(--ink);color:var(--on-ink);transition:background .4s,color .4s}
+.b details[open]:not(.is-closing) .badge{background:var(--on-ink);color:var(--ink)}
+.b .q{flex:1;font-size:16px;font-weight:700;letter-spacing:.05em;line-height:1.55}
+.b details[open]:not(.is-closing) .q{color:var(--on-ink)}
+.b .ans{padding:0 26px 28px 70px;font-size:14px;line-height:1.95;color:rgba(255,255,255,.86)}
+.b .ans strong{display:block;color:#fff;margin-bottom:6px}
+
+/* ============ C: 左バー＋大きな番号（グレーの回答エリア） ============ */
+.c .faq{display:grid;gap:0}
+.c details{position:relative;background:var(--surface);border-bottom:1px solid #d6d6d6}
+.c details::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ink);transform:scaleY(0);transform-origin:top;transition:transform .45s var(--ease)}
+.c details[open]:not(.is-closing)::before{transform:scaleY(1)}
+.c summary{display:flex;align-items:center;gap:22px;padding:24px 26px}
+.c .big{font-family:var(--display);font-size:38px;font-weight:700;line-height:1;color:#c8c8c8;width:58px;flex:none;transition:color .35s}
+.c details[open]:not(.is-closing) .big{color:var(--ink)}
+.c .q{flex:1;font-size:16px;font-weight:700;letter-spacing:.06em;line-height:1.55;color:var(--ink)}
+.c .chev{width:12px;height:12px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(45deg) translate(-2px,-2px);transition:transform .4s var(--ease);flex:none;margin-right:6px}
+.c details[open]:not(.is-closing) .chev{transform:rotate(225deg) translate(-2px,-2px)}
+.c .ans{margin:0 26px 26px 26px;padding:22px 24px 22px 24px;background:var(--section);font-size:14px;line-height:1.95;position:relative}
+.c .ans strong{display:block;color:var(--ink);margin-bottom:6px}
+.c .ans-i{padding:0}
+
+@media (max-width:540px){
+  .a .ans{padding:0 8px 26px 8px} .a summary{gap:14px} .a .q{font-size:15.5px}
+  .b .ans{padding:0 20px 24px 20px} .b summary{padding:18px 16px}
+  .c .big{font-size:28px;width:40px} .c summary{padding:20px 16px;gap:14px} .c .ans{margin:0 16px 20px;padding:18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="intro wrap">
+  <h1>FAQ アコーディオン 新デザイン 3案</h1>
+  <p>各案とも、1つ目が開いた状態です。クリックで開閉（動きも付いています）。サイトの配色・書体に合わせたモノトーン案です。</p>
+</header>
+
+<!-- ========== A ========== -->
+<section class="pattern a">
+  <div class="wrap">
+    <div class="tag"><b>A</b><span>ミニマル罫線</span></div>
+    <p class="desc">カードをやめて罫線だけで区切る、いちばん静かな案。番号＋「＋／－」で上品に。ホバーで質問文に細い下線。</p>
+    <div class="faq" data-faq>
+      <details open><summary><span class="num">01</span><span class="q">施工後、コーティングはどのくらい持ちますか？</span><span class="plus"></span></summary><div class="ans"><div><strong>お車の状態やご使用環境によって異なります。</strong>下地を整えたうえで施工するため、日々のお手入れをしていただければ、きれいな状態を長く保ちやすくなります。メンテナンスのご相談もお任せください。</div></div></details>
+      <details><summary><span class="num">02</span><span class="q">遠方でも依頼できますか？</span><span class="plus"></span></summary><div class="ans"><div><strong>県外のお客様もお待ちしています。</strong>最寄りの駅・空港までの送迎や、お預かり中の代車をご用意しています。</div></div></details>
+      <details><summary><span class="num">03</span><span class="q">軽自動車でも施工できますか？</span><span class="plus"></span></summary><div class="ans"><div><strong>もちろん可能です。</strong>軽自動車からスーパーカーまで、車種を問わず承っています。</div></div></details>
+      <details><summary><span class="num">04</span><span class="q">見積りは無料ですか？</span><span class="plus"></span></summary><div class="ans"><div><strong>カウンセリング・お見積りは無料です。</strong>LINEやDMからお気軽にご相談ください。</div></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== B ========== -->
+<section class="pattern b">
+  <div class="wrap">
+    <div class="tag"><b>B</b><span>ブラック反転</span></div>
+    <p class="desc">開いた項目がまるごと黒に反転して、いま読んでいる質問がひと目でわかる、コントラスト強めの案。Qバッジも白黒反転。</p>
+    <div class="faq" data-faq>
+      <details open><summary><span class="badge">Q</span><span class="q">施工後、コーティングはどのくらい持ちますか？</span><span class="plus"></span></summary><div class="ans"><div><strong>お車の状態やご使用環境によって異なります。</strong>下地を整えたうえで施工するため、日々のお手入れをしていただければ、きれいな状態を長く保ちやすくなります。メンテナンスのご相談もお任せください。</div></div></details>
+      <details><summary><span class="badge">Q</span><span class="q">遠方でも依頼できますか？</span><span class="plus"></span></summary><div class="ans"><div><strong>県外のお客様もお待ちしています。</strong>最寄りの駅・空港までの送迎や、お預かり中の代車をご用意しています。</div></div></details>
+      <details><summary><span class="badge">Q</span><span class="q">軽自動車でも施工できますか？</span><span class="plus"></span></summary><div class="ans"><div><strong>もちろん可能です。</strong>軽自動車からスーパーカーまで、車種を問わず承っています。</div></div></details>
+      <details><summary><span class="badge">Q</span><span class="q">見積りは無料ですか？</span><span class="plus"></span></summary><div class="ans"><div><strong>カウンセリング・お見積りは無料です。</strong>LINEやDMからお気軽にご相談ください。</div></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== C ========== -->
+<section class="pattern c">
+  <div class="wrap">
+    <div class="tag"><b>C</b><span>左バー＋大きな番号</span></div>
+    <p class="desc">大きな番号が開くと黒くなり、左に黒いバーが伸びる。回答はグレーの面にのせて、質問と回答を分けて読みやすくした案。</p>
+    <div class="faq" data-faq>
+      <details open><summary><span class="big">01</span><span class="q">施工後、コーティングはどのくらい持ちますか？</span><span class="chev"></span></summary><div class="ans"><div><strong>お車の状態やご使用環境によって異なります。</strong>下地を整えたうえで施工するため、日々のお手入れをしていただければ、きれいな状態を長く保ちやすくなります。メンテナンスのご相談もお任せください。</div></div></details>
+      <details><summary><span class="big">02</span><span class="q">遠方でも依頼できますか？</span><span class="chev"></span></summary><div class="ans"><div><strong>県外のお客様もお待ちしています。</strong>最寄りの駅・空港までの送迎や、お預かり中の代車をご用意しています。</div></div></details>
+      <details><summary><span class="big">03</span><span class="q">軽自動車でも施工できますか？</span><span class="chev"></span></summary><div class="ans"><div><strong>もちろん可能です。</strong>軽自動車からスーパーカーまで、車種を問わず承っています。</div></div></details>
+      <details><summary><span class="big">04</span><span class="q">見積りは無料ですか？</span><span class="chev"></span></summary><div class="ans"><div><strong>カウンセリング・お見積りは無料です。</strong>LINEやDMからお気軽にご相談ください。</div></div></details>
+    </div>
+  </div>
+</section>
+
+<script>
+/* 開閉アニメーション（サイト本体と同じ方式：高さ＋フェード） */
+document.querySelectorAll("[data-faq] details").forEach(function (item) {
+  var summary = item.querySelector("summary"), panel = item.querySelector(".ans"), running = null;
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !panel.animate) return;
+  function cs(p){ return parseFloat(getComputedStyle(panel)[p]) || 0; }
+  function run(opening, done) {
+    if (running) running.cancel();
+    var pb = cs("paddingBottom"), mb = cs("marginBottom"), full = panel.scrollHeight, cur = panel.offsetHeight;
+    var shut = { height: "0px", paddingTop: "0px", paddingBottom: "0px", marginBottom: "0px", opacity: 0 };
+    var open = { height: full + "px", paddingTop: cs("paddingTop") + "px", paddingBottom: pb + "px", marginBottom: mb + "px", opacity: 1 };
+    var from = opening ? shut : { height: cur + "px", paddingTop: cs("paddingTop") + "px", paddingBottom: pb + "px", marginBottom: mb + "px", opacity: 1 };
+    panel.style.overflow = "hidden";
+    running = panel.animate(opening ? [from, open] : [from, shut], { duration: 340, easing: "cubic-bezier(.22,.61,.36,1)" });
+    running.onfinish = function () { running = null; panel.style.overflow = ""; done(); };
+    running.oncancel = function () { panel.style.overflow = ""; };
+  }
+  summary.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (item.open && !item.classList.contains("is-closing")) {
+      item.classList.add("is-closing");
+      run(false, function () { item.open = false; item.classList.remove("is-closing"); });
+    } else if (!item.open) { item.open = true; run(true, function () {}); }
+  });
+});
+</script>
+</body>
+</html>
