@@ -41,7 +41,7 @@ ChatGPT（image_gen）で生成した12カット入りの画像（3列×4行）�
 | 0 | 00-car-black | TOPヒーロー |
 | 1 | 01-buffing | 代表メッセージ（TOP・CONCEPT）、サブスクのヒーロー |
 | 2 | 02-car-silver | フル施工のヒーロー、TOP「県外からのご依頼」 |
-| 3 | 03-foam-wash | サブスクのカード、WASH |
+| 3 | 03-wash-staff（Drive「スクリーンショット 2023-12-20 15.01.26.png」に差し替え済み） | フル施工のWASH |
 | 4 | 04-polisher | フル施工のカード、POLISH、店舗情報 |
 | 5 | 05-coating | COATING、部分コーティング |
 | 6 | 06-headlight | 個別メニューのカード、ヘッドライト |
