@@ -595,3 +595,11 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
 .contact-alt a[data-track="sns_instagram"] { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 .contact-alt a[data-track="sns_x"] { background: #000; }
 @media (prefers-reduced-motion: reduce) { .contact-alt a { transition: none; } .contact-alt a:hover { transform: none; } }
+
+/* Instagramへ行くボタン：Instagramのグラデーション（ホバーで白に塗り替わり、文字はマゼンタ） */
+.rn-button.rn-button--instagram {
+  --btn-bg: #cc2366; --btn-fg: var(--on-ink);
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: transparent;
+}
+.rn-button.rn-button--instagram:hover { border-color: var(--btn-bg); }

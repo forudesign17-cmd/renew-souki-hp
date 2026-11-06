@@ -145,7 +145,11 @@ def esc(s):
 
 def button(label, href, extra=""):
     ext = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
-    cls = "rn-button rn-button--line" if href == LINE_URL else "rn-button"
+    cls = "rn-button"
+    if href == LINE_URL:
+        cls += " rn-button--line"
+    elif href.startswith("https://www.instagram.com/"):
+        cls += " rn-button--instagram"
     return f'<a class="{cls}" href="{esc(href)}"{ext}{extra}>{label}{ICONS["chevron"]}</a>'
 
 
