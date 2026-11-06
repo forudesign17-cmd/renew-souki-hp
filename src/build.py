@@ -145,7 +145,8 @@ def esc(s):
 
 def button(label, href, extra=""):
     ext = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
-    return f'<a class="rn-button" href="{esc(href)}"{ext}{extra}>{label}{ICONS["chevron"]}</a>'
+    cls = "rn-button rn-button--line" if href == LINE_URL else "rn-button"
+    return f'<a class="{cls}" href="{esc(href)}"{ext}{extra}>{label}{ICONS["chevron"]}</a>'
 
 
 def sns_links(cls="rn-sns"):

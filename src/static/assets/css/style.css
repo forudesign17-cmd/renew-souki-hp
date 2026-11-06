@@ -583,3 +583,9 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
   .js .reason.reveal .reason__icon { transform: none; transition: none; }
   .js .reasons .reason.reveal, .js .points--list .point.reveal { transition-delay: 0s; }
 }
+
+/* ---------- LINEのボタンは緑基調（LINEのブランドカラー） ---------- */
+:root { --line-green: #06c755; }
+.rn-button.rn-button--line { --btn-bg: var(--line-green); --btn-fg: var(--on-ink); }
+.sp-bar a[data-track="line_click"] { background: var(--line-green); }
+.contact-alt a[data-track="line_click"] { background: var(--line-green); color: var(--on-ink); }
