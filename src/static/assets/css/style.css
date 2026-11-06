@@ -31,6 +31,7 @@
   --faq-width: 720px;
   --header-h: 80px;
   --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --font-serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
   --font-display: Urbanist, "Noto Sans JP", sans-serif;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
@@ -558,3 +559,7 @@ h1, h2, h3, .sec__lead, .poem, .rn-section-sub, .cta__text, .hero__catch { word-
 .movie__video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: var(--photo); object-fit: cover; }
 .movie figcaption { margin-top: 12px; text-align: center; font-size: 13px; letter-spacing: .12em; color: var(--text-sub); }
 @media (max-width: 540px) { .movies { gap: 24px; } }
+
+/* 明朝体セクション（CONCEPTページの本文） */
+.sec--serif, .sec--serif * { font-family: var(--font-serif); }
+.sec--serif svg, .sec--serif svg * { font-family: inherit; }
